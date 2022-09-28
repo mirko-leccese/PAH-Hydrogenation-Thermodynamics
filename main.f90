@@ -87,8 +87,7 @@ CHARACTER(len=20) :: optname							! Output filename where optimized composition
 
 OPEN(unit=3333, File='history-random.log', Position='Append')
 
-
-!Initialization of counter
+! Initialization of counter:
 m=0
 s=0
 l=0
@@ -97,40 +96,46 @@ j=0
 label=0
 iter=0
 
-read(*,*) Ni, n
-read(*,*) tmod
-read(*,*) pmod
-read(*,*) walkmode
-read(*,*) phasemod
-read(*,*) Tin, Tfin, nT
-read(*,*) Pin, Pfin, nP
-read(*,*) Th			!Hydrogen and Molecular Hydrogen temperature
-read(*,*) nf 			!Number of fractional hydrogenation level to sample in Phase Diagram mode
+READ(*,*) Ni, n
+READ(*,*) tmod
+READ(*,*) pmod
+READ(*,*) walkmode
+READ(*,*) phasemod
+READ(*,*) Tin, Tfin, nT
+READ(*,*) Pin, Pfin, nP
+! Read H/H2 temperature:
+READ(*,*) Th
+! Read number of fractional hydrogenation level to sample in Phase Diagram mode:		
+READ(*,*) nf 			
 
 
-allocate(Ncinp(0:n))
-allocate(Nhinp(1:2))
+ALLOCATE(Ncinp(0:n))
+ALLOCATE(Nhinp(1:2))
 
-read(*,*) Ncinp(0)
-read(*,*) Ncinp(1)
-read(*,*) Ncinp(n)
-read(*,*) ihydro		!Population of intermediate hydrogenated species
-do l=2,n-1
+READ(*,*) Ncinp(0)
+READ(*,*) Ncinp(1)
+READ(*,*) Ncinp(n)
+! Read Population of intermediate hydrogenated species:
+READ(*,*) ihydro		
+DO l=2,n-1
 	Ncinp(l)= ihydro
-end do
-read(*,*) Nhinp(1)		!Hydrogen Atoms
-read(*,*)  Nhinp(2)		!Hydrogen Molecules
-read(*,*) incr
-read(*,*) Y1			!Factor that controls the interval of random variations
-read(*,*) fact1
-read(*,*) threshdelta, maxcounter
-read(*,*) maxwrong
-read(*,*) threshold
-read(*,*) seq			!Check sequential random walk mode
-read(*,*) W, npoint		!Width of lorenzian smearing and number of points
+END DO
+! Read number of H atoms:
+READ(*,*) Nhinp(1)		
+! Read number of H2 molecules:
+READ(*,*)  Nhinp(2)		
+READ(*,*) incr
+READ(*,*) Y1			
+READ(*,*) fact1
+READ(*,*) threshdelta, maxcounter
+READ(*,*) maxwrong
+READ(*,*) threshold
+READ(*,*) seq			
+READ(*,*) W, npoint		
 
-Fmin=3*Ni-6                           !Min vibrational degrees of freedom
-Fmax=3*(Ni+n)-6                       !Max vibrational degrees of freedom
+! Computing min and max number of vibrational degrees of freedom:
+Fmin=3*Ni-6                           
+Fmax=3*(Ni+n)-6                       
 WRITE(*,*) ' '
 WRITE(*,*) 'Min Vibrational Degrees of Freedom =',  Fmin, 'Max Vibrational Degrees of Freedom = ', Fmax
 
@@ -141,233 +146,242 @@ ALLOCATE(molar(0:n))
 ALLOCATE(Trot(0:n,3))
 ALLOCATE(symm(0:n))
 
-  !Reading data from thermo.dat
-write(*,*) ''
-write(*,*) 'Reading thermodynamical data from thermo.dat... '
-do s=0,n
-	write(filename,'(I2.2,"-thermo.dat")') s
-	write(*,*) filename
-	open(Unit=1, File=filename)
-	read(1,*) E(s)
-	read(1,*) (ele(s,j), j=1,2)
-	read(1,*) molar(s)
-	read(1,*) symm(s)
-	read(1,*) (Trot(s,j), j=1,3)
+! Reading data from thermo.dat files:
+WRITE(*,*) ''
+WRITE(*,*) 'Reading thermodynamical data from thermo.dat... '
+DO s=0,n
+	WRITE(filename,'(I2.2,"-thermo.dat")') s
+	WRITE(*,*) filename
+	OPEN(Unit=1, File=filename)
+	READ(1,*) E(s)
+	READ(1,*) (ele(s,j), j=1,2)
+	READ(1,*) molar(s)
+	READ(1,*) symm(s)
+	READ(1,*) (Trot(s,j), j=1,3)
 	F=3*(Ni+s)-6
-	read(1,*) (nu(s,j), j=1,F)
-	close(1)
-end do
+	READ(1,*) (nu(s,j), j=1,F)
+	CLOSE(1)
+END DO
 
-if ( tmod.eq.1) then
- !Perform a Temperature Analysis: This mod provides Rotational, Vibrational 
- !and Internal Partition Function as functions of temperature. The analysis 
- !is performed also on hydrogen atom and hydrogen molecule. 
-	allocate(T(0:nT-1))
-	do l=0,nT-1
+IF ( tmod.eq.1) then
+	! Perform a Temperature Analysis: This mod provides Rotational, Vibrational 
+ 	! and Internal Partition Function as functions of temperature. The analysis 
+ 	! is performed also on hydrogen atom and hydrogen molecule. 
+
+	! Generating Temperature array:
+	ALLOCATE(T(0:nT-1))
+	DO l=0,nT-1
 	dT = (Tfin-Tin)/(nT-1)
 		T(l)=dT*l+Tin
-		write(*,*) 'Temperature = ', T(l)
-	end do
-	!Analysis on PAHs species
-	pCn=Pin							!In this mod, pressure is held fixed, hence every PAHs
-								!has the same pressure, set equal to Pin
-	do label=0,n
+		WRITE(*,*) 'Temperature = ', T(l)
+	END DO
+
+	! Starting analysis on PAHs species:
+
+	! In this mod, pressure is held fixed, hence every PAHs has the same pressure, set equal to Pin
+	pCn=Pin							
+	DO label=0,n
 		F=3*(Ni+label)-6
-		write(zvibname,'(I2.2,"-Zvib.t")') label
-		write(zrotname, '(I2.2, "-Zrot.t")') label
-		write(zintname, '(I2.2,"-Zint.t")') label
-		write(dbpname, '(I2.2,"-dbp.t")') label
-		write(alphaname, '(I2.2,"-RTlnP.t")') label
-		write(betaname, '(I2.2,"-RTlnZ.t")' ) label
-		write(gammaname, '(I2.2,"-diffRT.t")' ) label
-		write(freename, '(I2.2, "-G.t")' ) label
-		open(Unit=2, File=zvibname, Position='Append')
-		open(Unit=3, File=zrotname, Position='Append')
-		open(Unit=4, File=zintname, Position='Append')
-		open(Unit=5, File=dbpname, Position='Append')
-		open(Unit=6, File=alphaname, Position='Append')
-		open(Unit=7, File=betaname, Position='Append')
-		open(Unit=8, File=gammaname, Position='Append')
-		open(Unit=9, File=freename, Position='Append')
-		do k=0,nT-1
-			!Initialization 
+		WRITE(zvibname,'(I2.2,"-Zvib.t")') label
+		WRITE(zrotname, '(I2.2, "-Zrot.t")') label
+		WRITE(zintname, '(I2.2,"-Zint.t")') label
+		WRITE(dbpname, '(I2.2,"-dbp.t")') label
+		WRITE(alphaname, '(I2.2,"-RTlnP.t")') label
+		WRITE(betaname, '(I2.2,"-RTlnZ.t")' ) label
+		WRITE(gammaname, '(I2.2,"-diffRT.t")' ) label
+		WRITE(freename, '(I2.2, "-G.t")' ) label
+		OPEN(Unit=2, File=zvibname, Position='Append')
+		OPEN(Unit=3, File=zrotname, Position='Append')
+		OPEN(Unit=4, File=zintname, Position='Append')
+		OPEN(Unit=5, File=dbpname, Position='Append')
+		OPEN(Unit=6, File=alphaname, Position='Append')
+		OPEN(Unit=7, File=betaname, Position='Append')
+		OPEN(Unit=8, File=gammaname, Position='Append')
+		OPEN(Unit=9, File=freename, Position='Append')
+		DO k=0,nT-1
+			! Initialization 
 			G=0.0d0
 			CALL partition( T(k), nu, n, label, F, Fmax, ele, symm, Trot, Zvib, Zrot, Zint)
 			CALL dbpressure( T(k), molar, n, label, dbp)
-			write(2,*) T(k), Zvib
-			write(3,*) T(k), Zrot
-			write(4,*) T(k), Zint
-			write(5,*) T(k), dbp			!(bar)
-			!Computing contributions to free energy and free energy at fixed Pressure
-			!alpha = RTln(pCn/dbp), beta=RTln(Zn) , gamma=alpha-beta   in eV
+			WRITE(2,*) T(k), Zvib
+			WRITE(3,*) T(k), Zrot
+			WRITE(4,*) T(k), Zint
+			WRITE(5,*) T(k), dbp			!(bar)
+			! Computing contributions to free energy and free energy at fixed pressure
+			! alpha = RTln(pCn/dbp), beta=RTln(Zn) , gamma=alpha-beta   (eV)
 			alpha= ( R*T(k)*log(pCn/dbp) )*JmoltoeV
 			beta=( R*T(k)*log(Zint) )*JmoltoeV
 			gamma=alpha-beta
 			G=E(label)*hartreetoJmol*JmoltoeV+gamma
-			write(6,*) T(k), alpha
-			write(7,*) T(k), beta
-			write(8,*) T(k), gamma
-			write(9,*) T(k), G
-		end do
-		close(2)
-		close(3)
-		close(4)
-		close(5)
-		close(6)
-		close(7)
-		close(8)
-		close(9)
-	end do
-	!Analysis on Hydrogen Atom and Molecule
+			WRITE(6,*) T(k), alpha
+			WRITE(7,*) T(k), beta
+			WRITE(8,*) T(k), gamma
+			WRITE(9,*) T(k), G
+		END DO
+		CLOSE(2)
+		CLOSE(3)
+		CLOSE(4)
+		CLOSE(5)
+		CLOSE(6)
+		CLOSE(7)
+		CLOSE(8)
+		CLOSE(9)
+	END DO
+	! Starting analysis on H/H2:
 	pH2=Pin
 	pH=Pin
-	open(Unit=100, File='h2-G.t', Position='Append')
-	open(Unit=101, File='h2-lambda.t', Position='Append')
-	open(Unit=102, File='h2-Zvib.t', Position='Append')
-	open(Unit=103, File='h2-Zrot.t', Position='Append')
-	open(Unit=104, File='h2-Zint.t', Position='Append')
-	open(Unit=105, File='h-lambda.t', Position='Append')
-	open(Unit=106, File='h-G.t', Position='Append')
-	do k=0,nT-1
+	OPEN(Unit=100, File='h2-G.t', Position='Append')
+	OPEN(Unit=101, File='h2-lambda.t', Position='Append')
+	OPEN(Unit=102, File='h2-Zvib.t', Position='Append')
+	OPEN(Unit=103, File='h2-Zrot.t', Position='Append')
+	OPEN(Unit=104, File='h2-Zint.t', Position='Append')
+	OPEN(Unit=105, File='h-lambda.t', Position='Append')
+	OPEN(Unit=106, File='h-G.t', Position='Append')
+	DO k=0,nT-1
 		CALL hydrogenfree( T(k), pH2, lambdaH2, ZvH2, ZrH2, ZiH2, GH2)
 		CALL hatomfree(T(k), pH, lambdaH, Gah)
-		write(100,*) T(k), GH2
-		write(101,*) T(k), lambdaH2
-		write(102,*) T(k), ZvH2
-		write(103,*) T(k), ZrH2
-		write(104,*) T(k), ZiH2
-		write(105,*) T(k), lambdaH
-		write(106,*) T(k), Gah
-	end do
-	close(100)
-	close(101)
-	close(102)
-	close(103)
-	close(104)
-	close(105)
-	close(106)
-	deallocate(T)
-else if (tmod.eq.0) then
-	write(*,*) ' No Temperature Analysis requested '
-else 
-	write(*,*) ' Warning: Invalid value for tmod! '
-end if
+		WRITE(100,*) T(k), GH2
+		WRITE(101,*) T(k), lambdaH2
+		WRITE(102,*) T(k), ZvH2
+		WRITE(103,*) T(k), ZrH2
+		WRITE(104,*) T(k), ZiH2
+		WRITE(105,*) T(k), lambdaH
+		WRITE(106,*) T(k), Gah
+	END DO
+	CLOSE(100)
+	CLOSE(101)
+	CLOSE(102)
+	CLOSE(103)
+	CLOSE(104)
+	CLOSE(105)
+	CLOSE(106)
+	DEALLOCATE(T)
+ELSE IF (tmod.eq.0) then
+	WRITE(*,*) ' No Temperature Analysis requested '
+ELSE 
+	WRITE(*,*) ' Warning: Invalid value for tmod! '
+END IF
 
-if ( pmod.eq.1) then
-	 !Perform a Pressure Analysis: This mod provides dependence of 
-	 !free energies with respect to pressure at fixed temperature.
-	 !In this mod, T is set equal to Ti
-	allocate(P(0:nP-1))
-        do l=0,nP-1
+IF ( pmod.eq.1) then
+	! Perform a Pressure Analysis: this mod provides dependence of 
+	! free energies with respect to pressure at fixed temperature.
+	! In this mod, T is set equal to Ti
+	ALLOCATE(P(0:nP-1))
+        DO l=0,nP-1
         dP = (Pfin-Pin)/(nP-1)
                 P(l)=dP*l+Pin
-                write(*,*) 'Pressure = ', P(l)
-        end do
-	!Analysis on PAHs species
-	do label=0,n
+                WRITE(*,*) 'Pressure = ', P(l)
+        END DO
+	! Starting analysis on PAHs species:
+	DO label=0,n
 		F=3*(Ni+label)-6
 		CALL partition( Tin, nu, n, label, F, Fmax, ele, symm, Trot, Zvib, Zrot, Zint)
-        	CALL dbpressure( Tin, molar, n, label, dbp)
-		!Computing term of Free energy independent from pressure
+        CALL dbpressure( Tin, molar, n, label, dbp)
+		! Computing pressure-independent terms:
 		beta = ( R*Tin*log(Zint) )*JmoltoeV
-		write(alphaname, '(I2.2,"-RTlnP.p")') label
-		write(gammaname, '(I2.2, "-diffP.p")') label
-		write(freename, '(I2.2, "-G.p")' ) label
-		open(Unit=10, File=alphaname, Position='Append')
-		open(Unit=11, File=gammaname, Position='Append')
-		open(Unit=12, File=freename, Position='Append')
-		do k=0,nP-1
-			!Initialization
+		WRITE(alphaname, '(I2.2,"-RTlnP.p")') label
+		WRITE(gammaname, '(I2.2, "-diffP.p")') label
+		WRITE(freename, '(I2.2, "-G.p")' ) label
+		OPEN(Unit=10, File=alphaname, Position='Append')
+		OPEN(Unit=11, File=gammaname, Position='Append')
+		OPEN(Unit=12, File=freename, Position='Append')
+		DO k=0,nP-1
+			! Initialization
 			G=0.0d0
 			!Computing contributions to free energy and free energy at fixed temperature
-                        !alpha = RTln(pCn/dbp), beta=RTln(Zn) , gamma=alpha-beta   in eV
-                        alpha= ( R*Tin*log(P(k)/dbp) )*JmoltoeV
-                        gamma=alpha-beta
-                        G=E(label)*hartreetoJmol*JmoltoeV+gamma
-			write(10,*) P(k), alpha
-			write(11,*) P(k), gamma
-                        write(12,*) P(k), G
-                end do
-		close(10)
-		close(11)
-		close(12)
-	end do
-	!Analysis on Hydrogen Atom And Hydrogen Molecule
-	open(Unit=107, File='h2-G.p', Position='Append')
-        open(Unit=108, File='h-G.p', Position='Append')
-        do k=0,nP-1
-                CALL hydrogenfree( Tin, P(k), lambdaH2, ZvH2, ZrH2, ZiH2, GH2)
-                CALL hatomfree(Tin, P(k), lambdaH, Gah)
-		write(107,*) P(k), GH2
-                write(108,*) P(k), Gah
-        end do
-	close(107)
-	close(108)
-	deallocate(P)
-else if (pmod.eq.0) then
-        write(*,*) ' No Pressure Analysis requested '
-else 
-        write(*,*) ' Warning: Invalid value for pmod! '
-end if
+            !alpha = RTln(pCn/dbp), beta=RTln(Zn) , gamma=alpha-beta   (eV)
+            alpha= ( R*Tin*log(P(k)/dbp) )*JmoltoeV
+            gamma=alpha-beta
+            G=E(label)*hartreetoJmol*JmoltoeV+gamma
+			WRITE(10,*) P(k), alpha
+			WRITE(11,*) P(k), gamma
+            WRITE(12,*) P(k), G
+        END DO
+		CLOSE(10)
+		CLOSE(11)
+		CLOSE(12)
+	END DO
+	! Starting analysis on H/H2:
+	OPEN(Unit=107, File='h2-G.p', Position='Append')
+    OPEN(Unit=108, File='h-G.p', Position='Append')
+    DO k=0,nP-1
+        CALL hydrogenfree( Tin, P(k), lambdaH2, ZvH2, ZrH2, ZiH2, GH2)
+        CALL hatomfree(Tin, P(k), lambdaH, Gah)
+		WRITE(107,*) P(k), GH2
+        WRITE(108,*) P(k), Gah
+    END DO
+	CLOSE(107)
+	CLOSE(108)
+	DEALLOCATE(P)
+ELSE IF (pmod.eq.0) THEN
+    WRITE(*,*) ' No Pressure Analysis requested '
+ELSE 
+    WRITE(*,*) ' Warning: Invalid value for pmod! '
+END IF
 
-!Random Walk at Tin And Pin
-if (walkmode.eq.1) then
-        write(*,*) ' '
-        write(*,*) ' Input Mixture Composition:'
-        write(*,*) ' N 0H     = ', Ncinp(0),  'N iH     = ', Ncinp(1), '      N', n,'H =', Ncinp(n)
-        write(*,*) ' N H atom = ', Nhinp(1),  'N H2 mol = ', Nhinp(2)
-        write(*,*) ' '
-	allocate(Nctrial(0:n))
-	allocate(Nhtrial(1:2))
- 	allocate(xctrial(0:n))
-	allocate(xhtrial(1:2))
-	allocate(Gn(0:n))
-	!Total number of pahs
+! Random Walk at initial Tin And Pin:
+IF (walkmode.eq.1) THEN
+    WRITE(*,*) ' '
+    WRITE(*,*) ' Input Mixture Composition:'
+    WRITE(*,*) ' N 0H     = ', Ncinp(0),  'N iH     = ', Ncinp(1), '      N', n,'H =', Ncinp(n)
+    WRITE(*,*) ' N H atom = ', Nhinp(1),  'N H2 mol = ', Nhinp(2)
+    WRITE(*,*) ' '
+	ALLOCATE(Nctrial(0:n))
+	ALLOCATE(Nhtrial(1:2))
+ 	ALLOCATE(xctrial(0:n))
+	ALLOCATE(xhtrial(1:2))
+	ALLOCATE(Gn(0:n))
+	! Computing total number of PAH molecules:
 	Nctot0=0.0d0
 	sumH=0.0d0
-	do label=0,n
+	DO label=0,n
 		Nctot0=Nctot0+Ncinp(label)
 		sumH=sumH+label*Ncinp(label)
-	end do
+	END DO
+	! Computing total number of molecules in the mixture:
 	Nhtot0=Nhinp(1)+2.0d0*Nhinp(2)+sumH
 	
 	Gold = 0.0d0        !Check on G
-        ! ---------------- guess and initial G of the mixture ----------------!
-        write(*,*) 'Calculating Free Energy of the input mixture at given conditions...'
-        Nhtrial = Nhinp
-        Nctrial = Ncinp
-        Ntot = sum(Ncinp)
-        Ntot = Ntot + sum(Nhinp)
-	write(*,*) ' Total Number of Molecules in the mixture:', Ntot
-        xhtrial = Nhinp / Ntot
-        xctrial = Ncinp / Ntot
-        pH2 = xhtrial(2)*Pin
-        pH = xhtrial(1)*Pin
-        CALL hydrogenfree(Th, pH2, lambdaH2, ZvH2, ZrH2, ZiH2, Ghyd(2))	! H2 Gibbs free energy
-        CALL hatomfree(Th, pH, lambdaH, Ghyd(1))          			! H  Gibbs free energy
+    ! ---------------- guess and initial G of the mixture ----------------!
+    WRITE(*,*) 'Calculating Free Energy of the input mixture at given conditions...'
+    Nhtrial = Nhinp
+    Nctrial = Ncinp
+    Ntot = sum(Ncinp)
+    Ntot = Ntot + sum(Nhinp)
+	WRITE(*,*) ' Total Number of Molecules in the mixture:', Ntot
+	! Computing molar fractions:
+    xhtrial = Nhinp / Ntot
+    xctrial = Ncinp / Ntot
+    pH2 = xhtrial(2)*Pin
+    pH = xhtrial(1)*Pin
+	! Computing H/H2 Gibbs Free Energy calling external subroutines:
+    CALL hydrogenfree(Th, pH2, lambdaH2, ZvH2, ZrH2, ZiH2, Ghyd(2))	! H2 Gibbs free energy
+    CALL hatomfree(Th, pH, lambdaH, Ghyd(1))          			! H  Gibbs free energy
 
-        Gmixn = 0.0d0
-        !Cycle over hydrogenated species
-        do label=0,n
-           F=3*(Ni+label)-6                                                                      
-           CALL partition(Tin, nu, n, label, F, Fmax, ele, symm, Trot, Zvib, Zrot, Zint)                 
-           CALL dbpressure(Tin, molar, n, label, dbp)
-           pCn=xctrial(label)*Pin                                                                  ! Partial Pressure in the mixture of each specie
-	   if ( pCn < 1d-50 ) then
-		Gn(label) = 0.0d0 
-	   else
-		Gn(label) = (E(label)*hartreetoJmol + R*Tin*log(pCn/dbp) - R*Tin*log(Zint))*JmoltoeV  
-           end if   
-	Gmixn=Gmixn+Nctrial(label)*Gn(label)                                                    ! Computing of PAH mixture only 
-        end do
-        G0=Gmixn+Nhtrial(1)*Ghyd(1)+Nhtrial(2)*Ghyd(2)                                             !Adding hydrogen contributions
-        Gold = G0
-        write(*,*) '-------------'
-        write(*,*) ' Temperature (K) = ', Tin,' Pressure (bar) = ', Pin,' Gmixture =', G0
-        ! ----------------------------------------------------! 
-	!Random Walk Mode
-
-	!Sequential Random Walk
+    Gmixn = 0.0d0
+    ! Cycle over hydrogenated species:
+    DO label=0,n
+    	F=3*(Ni+label)-6                                                                      
+        CALL partition(Tin, nu, n, label, F, Fmax, ele, symm, Trot, Zvib, Zrot, Zint)                 
+        CALL dbpressure(Tin, molar, n, label, dbp)
+		! Computing partial Pressures in the mixture for each PAH specie:
+        pCn=xctrial(label)*Pin                                                                  
+		IF ( pCn < 1d-50 ) THEN
+			Gn(label) = 0.0d0 
+	   	ELSE
+			Gn(label) = (E(label)*hartreetoJmol + R*Tin*log(pCn/dbp) - R*Tin*log(Zint))*JmoltoeV  
+        END IF  
+		! Computing of Free Energy for the "carbon" component:
+		Gmixn=Gmixn+Nctrial(label)*Gn(label)                                                     
+    END DO
+	! Adding H/H2 contributions:
+    G0=Gmixn+Nhtrial(1)*Ghyd(1)+Nhtrial(2)*Ghyd(2)                                             
+    Gold = G0
+    WRITE(*,*) '-------------'
+    WRITE(*,*) ' Temperature (K) = ', Tin,' Pressure (bar) = ', Pin,' Gmixture =', G0
+    ! ----------------------------------------------------! 
+	
+	! Sequential Random Walk:
 	s=1
 	iter=1
 	counter=1
@@ -375,206 +389,210 @@ if (walkmode.eq.1) then
 	nright=0
 	nneg=0
 	nwrong=0
-	write(3333,*) ' RANDOM WALK: '
-	write(3333,*) ' '
-	write(3333,*) ' Variation interval defined by:'
-	write(3333,*) 'Y1 = ', W1
-	write(3333,*) ' '
-	write(3333,*) ' RANDOM WALK - START'
-	walk: do while (s <= n)
+	WRITE(3333,*) ' RANDOM WALK: '
+	WRITE(3333,*) ' '
+	WRITE(3333,*) ' Variation interval defined by:'
+	WRITE(3333,*) 'Y1 = ', W1
+	WRITE(3333,*) ' '
+	WRITE(3333,*) ' RANDOM WALK - START'
+	walk: DO WHILE (s <= n)
 		ntotal=ntotal+1
-		open(unit=6666, File='history-steps.log', Action='Write', Status='Replace')
-		write(6666,*) ' ntotal =', ntotal
-		write(6666,*) ' nright = ', nright, ' nneg = ', nneg, ' nwrong = ', nwrong
-		write(6666,*) ' %neg = ', (real(nneg)/real(ntotal))*100.0d0 , '%wrong = ', (real(nwrong)/real(ntotal))*100.0d0
-		if (counter > maxcounter ) then
-			write(*,*) ' Warning: VARIATION INTERVAL set to half the original '
-			write(3333,*) ' Counter exceed maxcounter, counter = ', counter, ' at iter = ', iter
-			write(3333,*) ' VARIATION INTERVAL modified by a factor = ', fact1
-			write(3333,*) ' Y1 = ', W1
-			write(3333,*) ' '
+		OPEN(unit=6666, File='history-steps.log', Action='write', Status='Replace')
+		WRITE(6666,*) ' ntotal =', ntotal
+		WRITE(6666,*) ' nright = ', nright, ' nneg = ', nneg, ' nwrong = ', nwrong
+		WRITE(6666,*) ' %neg = ', (real(nneg)/real(ntotal))*100.0d0 , '%wrong = ', (real(nwrong)/real(ntotal))*100.0d0
+		IF (counter > maxcounter ) then
+			WRITE(*,*) ' Warning: VARIATION INTERVAL set to half the original '
+			WRITE(3333,*) ' Counter exceed maxcounter, counter = ', counter, ' at iter = ', iter
+			WRITE(3333,*) ' VARIATION INTERVAL modified by a factor = ', fact1
+			WRITE(3333,*) ' Y1 = ', W1
+			WRITE(3333,*) ' '
 			W1=W1*fact1
-			!W2=W2*fact2
 			counter=1
-		else if ( counter == 0 ) then
+		ELSE IF ( counter == 0 ) then
 			W1=Y1
-		end if
+		END IF
 		 
-		if (wrong > maxwrong ) then
-			write(*,*) ' Warning: Not converged after ', wrong, ' iterations! '
+		IF (wrong > maxwrong ) then
+			WRITE(*,*) ' Warning: Not converged after ', wrong, ' iterations! '
 			wrong=1
-			write(optname, '(I2.2,"-seqopt.out")') s
-			open(Unit=1100, File=optname)
-			do m=0,n
-				write(1100,*) m, Ncinp(m), Tin, Pin
-			end do
-			write(1100,*) "-1", Nhinp(1), Tin, Pin
-			write(1100,*) "-2", Nhinp(2), Tin, Pin
-			close(1100)
+			WRITE(optname, '(I2.2,"-seqopt.out")') s
+			OPEN(Unit=1100, File=optname)
+			DO m=0,n
+				WRITE(1100,*) m, Ncinp(m), Tin, Pin
+			END DO
+			WRITE(1100,*) "-1", Nhinp(1), Tin, Pin
+			WRITE(1100,*) "-2", Nhinp(2), Tin, Pin
+			CLOSE(1100)
 			CALL Lorentzian(s, W, npoint, seq, n)
-			if ( s == n ) then 
+			IF ( s == n ) then 
 				STOP
-			else 
+			ELSE 
 				s=s+1  
-!When a new hydrogenation starts, the number of molecules of the incoming specie is 
-!redefined as the 10% of the most abundant species in the mixture. In this way, the 
-!variation space of this new specie is increased.
+				! When a new hydrogenation starts, the number of molecules of the "forming" specie is 
+				! redefined as the 10% of the most abundant specie currently in the mixture. 
+				! Doing so, the "variation space" for the forming species is not vanishing. 
+				! This choice should not have a great impact on the currently reached equilibrium. 
 				Ncinp(s)=Ncinp(s)+MAXVAL(Ncinp)*0.01d0
 				mostabun=MAXLOC(Ncinp, DIM=1) - 1 
 				Ncinp(mostabun)=Ncinp(mostabun)-MAXVAL(Ncinp)*0.01d0 
-			end if                         
+			END IF                         
 			counter=0
-			write(*,*) s
-		end if
+			WRITE(*,*) s
+		END IF
 		
-		 CALL RandomWalk(W1, s, n, Nctot0, Nhtot0, Ncinp, Nhinp, Nctrial, Nhtrial, xctrial, xhtrial)
-		!if (Nctrial(s)<0.0d0.or.Nhtrial(1)<0.0d0) then 
-		!	nneg=nneg+1
-		!	close(6666)
-		!	cycle walk
-		!else
-			pH2=xhtrial(2)*Pin
-			pH=xhtrial(1)*Pin
-			CALL hydrogenfree(Th, pH2, lambdaH2, ZvH2, ZrH2, ZiH2, Ghyd(2))        ! H2 Gibbs free energy
-			CALL hatomfree(Th, pH, lambdaH, Ghyd(1))                               ! H  Gibbs free energy
-			!Cycle over molecular species 
-			Gmixn = 0.0d0
-			do label=0,n
-				F=3*(Ni+label)-6 
-				CALL partition(Tin, nu, n, label, F, Fmax, ele, symm, Trot, Zvib, Zrot, Zint)
-				CALL dbpressure(Tin, molar, n, label, dbp)
-				pCn=xctrial(label)*Pin
-				if (pCn == 0.0d0 ) then
-					Gn(label) = 0.0d0
-				else
-					Gn(label) = (E(label)*hartreetoJmol + R*Tin*log(pCn/dbp) - R*Tin*log(Zint))*JmoltoeV
-				end if
-				Gmixn=Gmixn+Nctrial(label)*Gn(label)                                                    ! Computing of PAH mixture only 
-			end do
+		CALL RandomWalk(W1, s, n, Nctot0, Nhtot0, Ncinp, Nhinp, Nctrial, Nhtrial, xctrial, xhtrial)
+		pH2=xhtrial(2)*Pin
+		pH=xhtrial(1)*Pin
+		CALL hydrogenfree(Th, pH2, lambdaH2, ZvH2, ZrH2, ZiH2, Ghyd(2))        ! H2 Gibbs free energy
+		CALL hatomfree(Th, pH, lambdaH, Ghyd(1))                               ! H  Gibbs free energy
+		! Cycle over PAH species: 
+		Gmixn = 0.0d0
+		DO label=0,n
+			F=3*(Ni+label)-6 
+			CALL partition(Tin, nu, n, label, F, Fmax, ele, symm, Trot, Zvib, Zrot, Zint)
+			CALL dbpressure(Tin, molar, n, label, dbp)
+			pCn=xctrial(label)*Pin
+			IF (pCn == 0.0d0 ) THEN
+				Gn(label) = 0.0d0
+			ELSE
+				Gn(label) = (E(label)*hartreetoJmol + R*Tin*log(pCn/dbp) - R*Tin*log(Zint))*JmoltoeV
+			END IF
+				Gmixn=Gmixn+Nctrial(label)*Gn(label)                                                     
+			END DO
 			Gmixtot=Gmixn+Nhtrial(1)*Ghyd(1)+Nhtrial(2)*Ghyd(2)
-			if (Gmixtot < Gold) then
+			IF (Gmixtot < Gold) THEN
 				wrong=1
 				nright=nright+1
-				open(Unit=1000, File='G-RandomWalk.out', Position='Append')
-				write(1000,*) iter, Gmixtot-G0
-				close(1000)
-				iter=iter+1					!Counter of Total Iterations in RW
+				OPEN(Unit=1000, File='G-RandomWalk.out', Position='Append')
+				WRITE(1000,*) iter, Gmixtot-G0
+				CLOSE(1000)
+				! Counter of Total Iterations in RW:
+				iter=iter+1					
 				Ncinp=Nctrial
-                 		Nhinp=Nhtrial
+                Nhinp=Nhtrial
 				deltaGmix=abs(Gmixtot-Gold)
-				if (deltaGmix <= threshdelta ) then
+				IF (deltaGmix <= threshdelta ) THEN
 					counter=counter+1
-				else 
+				ELSE 
 					counter=1
-				end if
-				write(*,*) iter-1, deltaGmix
-                 		Gold=Gmixtot
-				if (deltaGmix < threshold ) then
-					write(3333,*) ' Optimized mixture found at iter =', iter-1
-					write(3333,*) ' '
-					write(3333,*) ' Adding specie with n = ', s+1
-					write(optname, '(I2.2,"-seqopt.out")') s
-					open(Unit=1100, File=optname)
-					do m=0,n
-						write(1100,*) m, Nctrial(m), xctrial(m), Tin, Pin
-					end do
-					write(1100,*) "-1", Nhtrial(1), xhtrial(1), Tin, Pin
-					write(1100,*) "-2", Nhtrial(2), xhtrial(2), Tin, Pin
-					close(1100)
+				END IF
+				WRITE(*,*) iter-1, deltaGmix
+                Gold=Gmixtot
+				IF (deltaGmix < threshold ) THEN
+					WRITE(3333,*) ' Optimized mixture found at iter =', iter-1
+					WRITE(3333,*) ' '
+					WRITE(3333,*) ' Adding specie with n = ', s+1
+					WRITE(optname, '(I2.2,"-seqopt.out")') s
+					OPEN(Unit=1100, File=optname)
+					DO m=0,n
+						WRITE(1100,*) m, Nctrial(m), xctrial(m), Tin, Pin
+					END DO
+					WRITE(1100,*) "-1", Nhtrial(1), xhtrial(1), Tin, Pin
+					WRITE(1100,*) "-2", Nhtrial(2), xhtrial(2), Tin, Pin
+					CLOSE(1100)
 					CALL Lorentzian(s, W, npoint, seq, n)
 					s=s+1
-!!When a new hydrogenation starts, the number of molecules of the incoming specie is 
-!redefined as the 10% of the most abundant species in the mixture. In this way, the 
-!variation space of this new specie is increased.
-				if (s<= n) then
-                                	Ncinp(s)=Ncinp(s)+MAXVAL(Ncinp)*incr
-                                	mostabun=MAXLOC(Ncinp, DIM=1) -1 
-                                	Ncinp(mostabun)=Ncinp(mostabun)-MAXVAL(Ncinp)*incr	
-				end if 			
+					! When a new hydrogenation starts, the number of molecules of the "forming" specie is 
+					! redefined as the 10% of the most abundant specie currently in the mixture. 
+					! Doing so, the "variation space" for the forming species is not vanishing. 
+					! This choice should not have a great impact on the currently reached equilibrium.
+					IF (s<= n) THEN
+                        Ncinp(s)=Ncinp(s)+MAXVAL(Ncinp)*incr
+                        mostabun=MAXLOC(Ncinp, DIM=1) -1 
+                        Ncinp(mostabun)=Ncinp(mostabun)-MAXVAL(Ncinp)*incr	
+					END IF 			
 					counter=0
-					write(*,*) s
-				end if
-			else
+					WRITE(*,*) s
+				END IF
+			ELSE
 				nwrong=nwrong+1
 				wrong=wrong+1
-			end if
-		close(6666)
-        end do walk
-	write(3333,*) ' Random Walk finished at iter =', iter
-	close(3333)
-	deallocate(Nctrial, Nhtrial, xctrial, xhtrial, Gn)
-end if
+			END IF
+		CLOSE(6666)
+        END DO walk
+	WRITE(3333,*) ' Random Walk finished at iter =', iter
+	CLOSE(3333)
+	DEALLOCATE(Nctrial, Nhtrial, xctrial, xhtrial, Gn)
+END IF
 
-if (phasemod.eq.1) then
-        !Perfrom phase diagram 
-	allocate(fr(0:nf-1))
-        do l=0,nf-1
-        df = (ff-fi)/(nf-1)
-                fr(l)=df*l+fi
-                write(*,*) 'Fractional hydrogenation = ', fr(l)
-        end do
+IF (phasemod.eq.1) THEN
+! PHASE DIAGRAM Mode:
+! Computing T, P and f grid:
+	ALLOCATE(fr(0:nf-1))
+    DO l=0,nf-1
+    	df = (ff-fi)/(nf-1)
+        fr(l)=df*l+fi
+        WRITE(*,*) 'Fractional hydrogenation = ', fr(l)
+    END DO
 
-	allocate(T(0:nT-1))
-        do l=0,nT-1
-        	dT = (Tfin-Tin)/(nT-1)
-                T(l)=dT*l+Tin
-                write(*,*) 'Temperature = ', T(l)
-        end do
+	ALLOCATE(T(0:nT-1))
+    DO l=0,nT-1
+        dT = (Tfin-Tin)/(nT-1)
+        T(l)=dT*l+Tin
+        WRITE(*,*) 'Temperature = ', T(l)
+    END DO
 
-	allocate(P(0:nP-1))
-        do l=0,nP-1
-        	dP = (Pfin-Pin)/(nP-1)
-                P(l)=dP*l+Pin
-                write(*,*) 'Pressure = ', P(l)
-        end do
+	ALLOCATE(P(0:nP-1))
+    DO l=0,nP-1
+        dP = (Pfin-Pin)/(nP-1)
+        P(l)=dP*l+Pin
+        WRITE(*,*) 'Pressure = ', P(l)
+    END DO
 
 
-	    WRITE(*,*) ''
-    write(*,*) '-------------'
-    write(*,*) 'PHASE DIAGRAM:'
-    write(*,*) ' '
-    !Simulating phase diagram
-    !Initiliazing Gn
-    allocate(Gn(0:n))
+	WRITE(*,*) ''
+    WRITE(*,*) '-------------'
+    WRITE(*,*) 'PHASE DIAGRAM:'
+    WRITE(*,*) ' '
+    ! Starting simulation:
+    ! Initiliazing Gn:
+    ALLOCATE(Gn(0:n))
     Gn=0.0d0
     Ghyd=0.0d0
-    allocate(DGf(1:n))
+    ALLOCATE(DGf(1:n))
     OPEN(UNIT=500, FILE='Phase-diagram.dat', ACTION='Write', POSITION='Append')
-    write(500,*) 'T (kelvin)            P (bar)                 f               Label'
-    write(*,*) 'Calculating Free energy differences...'
+    WRITE(500,*) 'T (kelvin)            P (bar)                 f               Label'
+    WRITE(*,*) 'Calculating Free energy differences...'
 
-	do k=0,nT-1
+	! Cycle over T:
+	DO k=0,nT-1
 		F=3*(Ni+0)-6
-        	CALL partition(T(k), nu, n, 0, F, Fmax, ele, symm, Trot, Zvib, Zrot, Z0)
-		CALL dbpressure(T(k), molar, n, 0, dbp0)    							!Computing debroglie pressure of pristine
+		! Computing De Broglie pressure and Partition function of bare molecules:
+        CALL partition(T(k), nu, n, 0, F, Fmax, ele, symm, Trot, Zvib, Zrot, Z0)
+		CALL dbpressure(T(k), molar, n, 0, dbp0)    							
 		!Cycle over P
-        	do s=0,nP-1
-                	!Cycle over f
-                	do i=1, nf-2
-                		pH2=fr(i)*P(s)  									!Computing partial pressure of H2
-                		p0=P(s)-pH2     									!Computing partial pressure of pristine
-                		Gn(0) = ( E(0)*hartreetoJmol + R*T(k)*log(p0/dbp0) - R*T(k)*log(Z0))*JmoltoeV           !Computing G of pristine at given conditions
+        DO s=0,nP-1
+        	! Cycle over f:
+            DO i=1, nf-2
+                pH2=fr(i)*P(s)  			
+				! Computing partial pressure of bare molecules:						
+                p0=P(s)-pH2     		
+				! Computing G at given thermodynamical conditions							
+                Gn(0) = ( E(0)*hartreetoJmol + R*T(k)*log(p0/dbp0) - R*T(k)*log(Z0))*JmoltoeV           
 				CALL hydrogenfree(T(k), pH2, lambdaH2, ZvH2, ZrH2, ZiH2, Ghyd(2))
-                        	!Cycle over molecules 
-                        	do label=1,n
-                                	F=3*(Ni+label)-6        						!Computing vib degrees of the 'label'th specie
-                                	CALL partition(T(k), nu, n, label, F, Fmax, ele, symm, Trot, Zvib, Zrot, Zint)    !Computing Z of the 'label'th specie
-                                	CALL dbpressure(T(k),  molar, n, label, dbp)
-                                	Gn(label) = (E(label)*hartreetoJmol + R*T(k)*log(P(s)/dbp) - R*T(k)*log(Zint))*JmoltoeV   !Computing G
-                                	DGf(label) = Gn(label)-Gn(0)-(label/2.0d0)*Ghyd(2) !Computing DeltaG
-                        	end do
-                        	minlabel=MINLOC(DGf, DIM=1) !Looking for smallest values at given conditions
-                        	minen=MINVAL(DGf)
-				write(500,*) T(k), P(s), fr(i), "n = ", minlabel, minen
-	               	end do
-        	end do
-	end do
+                ! Cycle over hydrogenated molecules:
+                DO label=1,n
+                    F=3*(Ni+label)-6        						
+                    CALL partition(T(k), nu, n, label, F, Fmax, ele, symm, Trot, Zvib, Zrot, Zint)    
+                    CALL dbpressure(T(k),  molar, n, label, dbp)
+                    Gn(label) = (E(label)*hartreetoJmol + R*T(k)*log(P(s)/dbp) - R*T(k)*log(Zint))*JmoltoeV   
+					! Computing DeltaG:
+                    DGf(label) = Gn(label)-Gn(0)-(label/2.0d0)*Ghyd(2) 
+                END DO
+					! Looking for smallest values at given conditions:
+                    minlabel=MINLOC(DGf, DIM=1) 
+                    minen=MINVAL(DGf)
+				WRITE(500,*) T(k), P(s), fr(i), "n = ", minlabel, minen
+	        END DO
+        END DO
+	END DO
 
-	write(*,*) 'Phase diagram done!!'
+	WRITE(*,*) 'Phase diagram done!!'
 
-	deallocate(DGf)
-	deallocate(Gn)
-	deallocate(T,P)
-end if
+	DEALLOCATE(DGf)
+	DEALLOCATE(Gn)
+	DEALLOCATE(T,P)
+END IF
 
-end program
+END PROGRAM
