@@ -430,12 +430,12 @@ IF (walkmode.eq.1) THEN
 			ELSE 
 				s=s+1  
 				! When a new hydrogenation starts, the number of molecules of the "forming" specie is 
-				! redefined as the 10% of the most abundant specie currently in the mixture. 
-				! Doing so, the "variation space" for the forming species is not vanishing. 
-				! This choice should not have a great impact on the currently reached equilibrium. 
-				Ncinp(s)=Ncinp(s)+MAXVAL(Ncinp)*0.01d0
+				! redefined as the X% of the most abundant specie currently in the mixture. 
+				! Keeping X low, the "variation space" for the forming species is not vanishing, while
+				! not having a great impact on the currently reached equilibrium. 
+				Ncinp(s)=Ncinp(s)+MAXVAL(Ncinp)*incr
 				mostabun=MAXLOC(Ncinp, DIM=1) - 1 
-				Ncinp(mostabun)=Ncinp(mostabun)-MAXVAL(Ncinp)*0.01d0 
+				Ncinp(mostabun)=Ncinp(mostabun)-MAXVAL(Ncinp)*incr
 			END IF                         
 			counter=0
 			WRITE(*,*) s
@@ -494,9 +494,9 @@ IF (walkmode.eq.1) THEN
 					CALL Lorentzian(s, W, npoint, seq, n)
 					s=s+1
 					! When a new hydrogenation starts, the number of molecules of the "forming" specie is 
-					! redefined as the 10% of the most abundant specie currently in the mixture. 
-					! Doing so, the "variation space" for the forming species is not vanishing. 
-					! This choice should not have a great impact on the currently reached equilibrium.
+					! redefined as the X% of the most abundant specie currently in the mixture. 
+					! Keeping X low, the "variation space" for the forming species is not vanishing, while
+					! not having a great impact on the currently reached equilibrium.
 					IF (s<= n) THEN
                         Ncinp(s)=Ncinp(s)+MAXVAL(Ncinp)*incr
                         mostabun=MAXLOC(Ncinp, DIM=1) -1 
