@@ -1,27 +1,39 @@
 SUBROUTINE dbpressure(T, molar, n, label, dbp)
 
-!Computing De Broglie Pressure (bar) and Thermal Wavelenght (m) at the kth temperature
-!for the ith=label hydrogenated molecule
+! This subroutine computes the De Broglie Pressure of a given PAH specie (label)
+! at given thermodynamical conditions:
+!
+! Args:
+!   T (real): temperature
+!   molar (array): array of PAH molar masses
+!   n (integer): number of hydrogenation levels (which sets the dimension of the array, i.e. the number of possible 
+!                hydrogenated species, 24 for coronene)
+!   label (integer): number identyfing the specific hydrogenated specie for which we want to compute "dbp"
+!
+! Out:
+!   dbp (real): DeBroglie pressure of the target hydrogenated specie
+!   
 
 USE thermo_constants
 
 IMPLICIT NONE
 
-!Declaring input variables
+! Declaring input variables:
 INTEGER(4) :: n, label
 REAL(8), DIMENSION(0:n) :: molar
 REAL(8) :: T
 
-!Declaring side and output variables
+! Declaring side and output variables:
 REAL(8) :: m, rad 
 REAL(8) :: vb, lambda, dbp
 
-!Initialization
+! Initialization
 lambda=0.0d0
 vb=0.0d0
 dbp=0.0d0
 
-m = molar(label)*amutog*gtokg   !Converting molar mass(amu) to Kg
+! Converting molar mass(amu) to Kg
+m = molar(label)*amutog*gtokg   
 rad = sqrt(2.0d0*pi*m*kb*T)
 
 lambda = h/rad
