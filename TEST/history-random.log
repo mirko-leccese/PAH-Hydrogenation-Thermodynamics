@@ -1,0 +1,87 @@
+  RANDOM WALK: 
+  
+  Variation interval defined by:
+ Y1 =    1.0000000000000000     
+  
+  RANDOM WALK - START
+  Counter exceed maxcounter, counter =           21  at iter =           23
+  VARIATION INTERVAL modified by a factor =    10.000000000000000     
+  Y1 =    1.0000000000000000     
+  
+  Optimized mixture found at iter =          23
+  
+  Adding specie with n =            2
+  Optimized mixture found at iter =          47
+  
+  Adding specie with n =            3
+  Optimized mixture found at iter =          58
+  
+  Adding specie with n =            4
+  Optimized mixture found at iter =          79
+  
+  Adding specie with n =            5
+  Optimized mixture found at iter =          98
+  
+  Adding specie with n =            6
+  Optimized mixture found at iter =         129
+  
+  Adding specie with n =            7
+  Optimized mixture found at iter =         142
+  
+  Adding specie with n =            8
+  Optimized mixture found at iter =         168
+  
+  Adding specie with n =            9
+  Optimized mixture found at iter =         181
+  
+  Adding specie with n =           10
+  Optimized mixture found at iter =         201
+  
+  Adding specie with n =           11
+  Optimized mixture found at iter =         215
+  
+  Adding specie with n =           12
+  Optimized mixture found at iter =         231
+  
+  Adding specie with n =           13
+  Optimized mixture found at iter =         247
+  
+  Adding specie with n =           14
+  Optimized mixture found at iter =         271
+  
+  Adding specie with n =           15
+  Optimized mixture found at iter =         287
+  
+  Adding specie with n =           16
+  Optimized mixture found at iter =         316
+  
+  Adding specie with n =           17
+  Optimized mixture found at iter =         334
+  
+  Adding specie with n =           18
+  Optimized mixture found at iter =         360
+  
+  Adding specie with n =           19
+  Optimized mixture found at iter =         372
+  
+  Adding specie with n =           20
+  Optimized mixture found at iter =         396
+  
+  Adding specie with n =           21
+  Optimized mixture found at iter =         409
+  
+  Adding specie with n =           22
+  Optimized mixture found at iter =         436
+  
+  Adding specie with n =           23
+  Counter exceed maxcounter, counter =           21  at iter =          461
+  VARIATION INTERVAL modified by a factor =    10.000000000000000     
+  Y1 =    1.0000000000000000     
+  
+  Optimized mixture found at iter =         461
+  
+  Adding specie with n =           24
+  Optimized mixture found at iter =         484
+  
+  Adding specie with n =           25
+  Random Walk finished at iter =         485

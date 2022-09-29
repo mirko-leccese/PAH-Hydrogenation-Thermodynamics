@@ -1,0 +1,24 @@
+36 24
+0
+0
+1
+0
+1 800  850
+1d-13 1d-16 600
+1.0d0
+3
+500.0d0
+1.0d0
+0.0d0
+0.0d0
+0.01d0
+10000.0d0
+0.01
+1.0d0  	        !Parameter that define the interval
+10.0d0 		        !Reducing factor
+1d-1 20	        !threshdelta for changing interval, max counter 
+250000			!maxwrong
+1d-6			!Threshold
+1
+0.05d0 10000
+
