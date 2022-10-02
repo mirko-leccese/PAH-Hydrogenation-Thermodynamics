@@ -14,11 +14,11 @@
 0.01d0
 10000.0d0
 0.01
-1.0d0  	        !Parameter that define the interval
-10.0d0 		        !Reducing factor
-1d-1 20	        !threshdelta for changing interval, max counter 
-250000			!maxwrong
-1d-6			!Threshold
+1.0d0  	        
+10.0d0 		        
+1d-1 20	        
+250000			
+1d-6			
 1
 0.05d0 10000
 
