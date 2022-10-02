@@ -1,0 +1,25 @@
+# Input structure
+36 24			! Number of atoms for the bare mol and number of hydrogenation
+0			    ! Temperature mode (1ON, 0OFF): partition functions, thermal wavelenght, etc as functions of T
+0			    ! Pressure mode (1ON, 0OFF): " as functions of P
+1			    ! Mixture mode: optimizing the mixture of pahs
+0		    	! Phase diagram mode
+289 800  850		! Tin, Tfin, nT
+1d-13 1d-16 600		! Pin, Pfin, nP
+289.0d0			    ! H/H2 temperature
+3			    ! Fractional hydrogenation levels
+500.0d0			! number of bare PAH molecules 
+1.0d0			! number of 1st hydrogenated molecules
+0.0d0			! number of 2st to n-1 hydrogenated molecules
+0.0d0			! number of superhydrogentaed molecules (last n)
+0.01d0			! number of H atoms
+10000.0d0		! number of H2 molecules
+0.01			! fraction of the most abundant specie that is added to the incoming specie in Mixture mode
+1.0d0  	        ! Parameter W that define the "width" of variation interval, dN=(2*(ran-1/2))*Ni/W 
+10.0d0 		    ! factor that multiplies W when DeltaGmix is lower than a given threshold (threshdelta below) a number of times exceeding maxcounter
+1d-1 20	        ! threshdelta for changing interval, max counter 
+250000			! maxwrong: maximum number of allowed attempts to fail before moving to a next specie
+1d-6			! Threshold for final convergence 
+1			    ! Lorentzian fitting (1 ON, 0 OFF): it prints out the optimized compositions as lorentzian functions
+0.05d0 10000	! FWHM, number of grid points for lorentzian fitting
+
