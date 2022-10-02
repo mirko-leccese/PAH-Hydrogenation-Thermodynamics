@@ -10,12 +10,12 @@ REAL(8), PARAMETER ::  E1 =  -0.158558d0,  E2 =   1.977990d0,  E3 = -20.533862d0
 REAL(8), PARAMETER ::  F1 =  -9.980797d0,  F2 =  -1.147438d0,  F3 = -38.515158d0
 REAL(8), PARAMETER ::  G1 = 172.707974d0,  G2 = 156.288133d0,  G3 = 162.081354d0
 
-!Relevant thermodynamical and chemical values:
+! Relevant thermodynamical and chemical values:
 REAL(8), PARAMETER :: nuh2 = 4543.5913d+2               ! Frequency (m-1) of the vibrational mode
 REAL(8), PARAMETER :: molarh2 = 2.01565d0               ! Molar mass H2 (amu)
 REAL(8), PARAMETER :: molarh=1.00783d0                  ! Molar mass H (amu) 
 REAL(8), PARAMETER :: B=60.9d+2							! Rotational constant of H2 in m^-1
-!REAL(8), PARAMETER :: B=159.29239792d+2				! Rotational constant adjucted to ensure continuity with Shomate, m^-1
+! REAL(8), PARAMETER :: B=159.29239792d+2				! Rotational constant adjucted to ensure continuity with Shomate, m^-1
 REAL(8) :: Edft=-1.157311d0                             ! DFT Energy (ZPE Corrected) at M06-2X, 6-311G(d,p) level (hartree)
 REAL(8) :: EdftH=-0.498302d0                            ! DFT Energy (ZPE Corrected) at M06-2X, 6-311G(d,p) level (hartree) for Atomic Hydrogen
 
