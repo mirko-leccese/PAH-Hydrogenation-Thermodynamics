@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.2)  4 OCT 2022 21:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.2)  4 OCT 2022 21:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1179,10 +1179,7 @@ er (name{equation.0.0.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.155 \begin{equation}
-                      
-Underfull \vbox (badness 2762) has occurred while \output is active []
-
- [3]
+                       [3]
 <flowchart.pdf, id=101, 423.557pt x 463.61052pt>
 File: flowchart.pdf Graphic file (type pdf)
 <use flowchart.pdf>
@@ -1227,7 +1224,7 @@ Here is how much of TeX's memory you used:
  49397 multiletter control sequences out of 15000+600000
  428852 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,12n,107p,1828b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,12n,107p,1897b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
@@ -1257,7 +1254,7 @@ fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/
 type1/public/cm-super/sftt1440.pfb>
-Output written on docs.pdf (5 pages, 418726 bytes).
+Output written on docs.pdf (5 pages, 418761 bytes).
 PDF statistics:
  252 PDF objects out of 1000 (max. 8388607)
  170 compressed objects within 2 object streams
