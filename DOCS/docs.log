@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.2)  2 OCT 2022 21:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.2)  4 OCT 2022 21:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1147,90 +1147,87 @@ rning (ext4): destination with the same identifier (name{equation.0.0.2}) has b
 een already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.128 \end{equation}
-                    ]
-Underfull \vbox (badness 1596) has occurred while \output is active []
+l.128 \begin{equation}
+                      ]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+38.
 
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 138.
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 150.
  [2]pdfTeX warning (ext4): destination with the same identifier (name{equation.
 0.0.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.152 \begin{equation}
+l.155 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.0.0.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.152 \begin{equation}
+l.155 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.0.0.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.152 \begin{equation}
+l.155 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.0.0.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.152 \begin{equation}
+l.155 \begin{equation}
                       
+Underfull \vbox (badness 2762) has occurred while \output is active []
 
-LaTeX Warning: Reference `fig:flowchart' on page 3 undefined on input line 180.
+ [3]
+<flowchart.pdf, id=101, 423.557pt x 463.61052pt>
+File: flowchart.pdf Graphic file (type pdf)
+<use flowchart.pdf>
+Package pdftex.def Info: flowchart.pdf  used on input line 178.
+(pdftex.def)             Requested size: 280.54115pt x 307.08743pt.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[3]pdfTeX warning (ext4): destination with the same identifier (name{equation.0
-.0.7}) has been already used, duplicate ignored
+ [4 <./flowchart.pdf>]pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.0.0.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.184 \begin{equation}
+l.190 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.0.0.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.184 \begin{equation}
+l.190 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.0.0.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.184 \begin{equation}
+l.190 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.0.0.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.184 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.0.0.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.188 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.0.0.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.188 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.0.0.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.188 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.0.0.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.188 \begin{equation}
-                       [4] (./docs.aux)
-
-LaTeX Warning: There were undefined references.
-
+l.190 \begin{equation}
+                       [5pdfTeX warning (ext4): destination with the same ident
+ifier (name{equation.0.0.7}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.196 \end{document}
+                    ] (./docs.aux)
 Package rerunfilecheck Info: File `docs.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32487 strings out of 478994
- 647024 string characters out of 5858184
- 981748 words of memory out of 5000000
- 49364 multiletter control sequences out of 15000+600000
- 427156 words of font info for 92 fonts, out of 8000000 for 9000
+ 32531 strings out of 478994
+ 648015 string characters out of 5858184
+ 981806 words of memory out of 5000000
+ 49397 multiletter control sequences out of 15000+600000
+ 428852 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,11n,107p,1846b,746s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,12n,107p,1828b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
@@ -1247,19 +1244,23 @@ ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/t
 exmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/20
 21/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/
+e/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/
 2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/20
 21/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021
 /texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/t
 exmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2021/tex
 mf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf-dis
-t/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on docs.pdf (4 pages, 313653 bytes).
+ist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2021/texmf-dist/fo
+nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
+s/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/
+type1/public/cm-super/sftt1440.pfb>
+Output written on docs.pdf (5 pages, 418726 bytes).
 PDF statistics:
- 184 PDF objects out of 1000 (max. 8388607)
- 128 compressed objects within 2 object streams
- 18 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 252 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
+ 162 words of extra memory for PDF output out of 10000 (max. 10000000)
 

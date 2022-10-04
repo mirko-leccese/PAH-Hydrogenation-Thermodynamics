@@ -103,9 +103,10 @@ title=Box~\thetcbcounter: #2,#1}
 \begin{document}
 \chapter*{Thermodynamics of PAH hydrogenation}
 
-Let consider the following chemical equilibria:
+\section*{Introduction}
+Let consider the following chemical equilibria for a \emph{polycyclic aromatic hydrocarbon} such as \emph{coronene}, $C_{24}H_{12}$:
 \begin{gather}
-    \text{C}_{20}\text{H}_{10+n} + H \rightarrow \text{C}_{20}\text{H}_{10+n+1} \nonumber \\
+    \text{C}_{24}\text{H}_{12+n} + H \rightarrow \text{C}_{24}\text{H}_{12+n+1} \nonumber \\
     2\text{H} \rightarrow \text{H}_2 \nonumber
 \end{gather}
 We define the \emph{fractional hydrogenation level} as
@@ -122,30 +123,32 @@ where $E_n$ is the DFT zero-point corrected energy, $\mathcal{Z}$ the internal p
     \mathcal{Z}^{int}_{n} \simeq \frac{1}{\sigma_n}\left( \frac{T}{\theta}\right)^{3/2}\prod_{j=1}^{F_n}\left[1-\exp\left(-\frac{\hbar\omega_j^{(n)}}{k_bT}\right)\right]\mathcal{Z}_{n}^{el}  \label{eqapp:zint}
 \end{equation}
 where $\theta_n=\hbar^2/2I^{(n)}k_bT$ is the rotational temperature of the n-fold hydrogenated structure with $I^{(n)} = (\pi I^{(n)}_AI^{(n)}_BI^{(n)}_C)^{1/3}$ being its moment of inertia, given in terms of the principal values of inertia tensor, $\omega^{(n)}_j$ the normal mode frequencies ($j=1,2,...F_n$ where $F_n$ is the number of vibrational degrees of freedom, $F_n=3(36+n)-6$) and $\mathcal{Z}^{el}_n$ the electronic partition function, $\mathcal{Z}^{el}_n = 1+\mod(n,2)$.
-For molecular hydrogen, the classical limit of rotational partition function is inappropriate at temperature $T \lesssim 100$ and one should consider the sum over \emph{all} states. To properly handle this situation, Equation \eqref{eqapp:zint} was still employed in the slightly modified form
+
+For molecular hydrogen, the classical limit of rotational partition function is inappropriate at temperature $T \lesssim 100$ and one should consider the sum over \emph{all} states. To properly handle this situation, Equation \eqref{eqapp:zint} can still be employed, but in the following slightly modified form
 \begin{equation}
     \mathcal{Z}^{int}_{H_2} \simeq \frac{1}{2}\frac{k_bT}{hcB}\left(1-\exp\left(-\frac{\hbar\omega}{k_bT}\right)\right)
 \end{equation}
-where the rotational constant $B$ was adjusted in order to make the entropy, $S=-k_bT\ln{\mathcal{Z}}$, continuous at 298.15 K (where $S$ was computed from the \emph{Shomate equation}\footnote{
+where the rotational constant $B$ can be adjusted in order to make the entropy, $S=-k_bT\ln{\mathcal{Z}}$, continuous at 298.15 K. The standard entropy $S$ can be computed from the \emph{Shomate equation}\footnote{
 Shomate Equation for standard entropy $S^{\circ}$ (J/mol K) reads as
 \begin{equation*}
 S^{\circ} = A \ln{(t)} + Bt + C\frac{t^2}{2} + D\frac{t^3}{3} - \frac{E}{2t^2} + G
 \end{equation*}
-where $t=T/1000$ is the reduced temperature (K) and $A,B,C,D,E,G$ are temperature-dependent parameters (their values can be found in the NIST Chemistry WebBook.}).
+where $t=T/1000$ is the reduced temperature (K) and $A,B,C,D,E,G$ are temperature-dependent parameters (their values can be found in the NIST Chemistry WebBook.}.
 
+\subsection*{Formation reaction energy: \texttt{phase diagram mode}}
 If one is interested in determining the most stable species at a given thermodynamic condition, one may consider the "formation reaction"
 \begin{equation}
-    \text{C}_{20}\text{H}_{10} + \frac{n}{2}\text{H}_{2} \rightarrow \text{C}_{20}\text{H}_{10+n} \nonumber
+    \text{C}_{24}\text{H}_{12} + \frac{n}{2}\text{H}_{2} \rightarrow \text{C}_{24}\text{H}_{12+n} \nonumber
 \end{equation}
 and the corresponding Gibbs free energy 
 \begin{align}
     \Delta G_f(P,T,f^0) = G_n&(P,T)-G_0(P-p_{hy},T)+ \nonumber \\
      &-\frac{n}{2}G_{H_2}(p_{hy},T) \nonumber 
 \end{align}
-where $p_{hy}=f^0P$ and look, for given conditions, $P$, $T$ and $f^0$, for the smallest values. 
+where $p_{hy}=f^0P$ and look, for given conditions, $P$, $T$ and $f^0$, for the smallest values. In \texttt{phase diagram mode}, the code computes such formation reaction energies in a prompted range of pressures, temperatures and fractional hydrogenation levels, and determine the most stable specie at any condition. 
 
-\section*{Mixture free energy}
-As a complementary approach to the thermodynamical analysis of PAH hydrogenation, let consider a mixture of PAH and (atomic/molecular) hydrogen and the problem of minimizing the mixture free energy. The initial mixture composition can be defined in terms of the number of molecules per each hydrogenated specie, $N^0_n$, plus the number of H atoms, $N^0_H$, and $\text{H}_2$ molecules, $N^0_{H_2}$. The associated initial Gibbs free energy is $G_{mix}^0$. The mixture composition can then be optimized \emph{stochastically}, by introducing random variations on each mixture components. After any variation,  the mixture free energy, $G_{mix}^{1}$ is re-computed and compared with that of the previous composition: if lower, $G_{mix}^1 < G_{mix}^0$, the newly random-generated composition is "saved" and used for the next step; otherwise that composition is "discarded" and another random-generated composition is checked until $G_{mix}^1 < G_{mix}^0$ is found. Such stochastic procedure can be applied to a mixture with an initial composition consisting of only bare PAH molecules and an excess of $\text{H}_2$, \emph{i.e.} setting $N^0_i\simeq 0$ and $N^0_{H}\simeq 0$. In principle, one may introduce random variations on each $N_i$ from the very first optimization step. However, a more reasonable choice consists in allowing the $(i+1)$ structure to "form" in the mixture only once the mixture with the hydrogenated molecules up to $n=i$ has reached the equilibrium\footnote{In other words, we are assuming that each hydrogenation step is "independent" of the others. Then, the equilibrium composition is reached through multiple "local" equilbria, $\text{C}_{20}\text{H}_{10+n} + \text{H} \rightarrow \text{C}_{20}\text{H}_{10+n+1}$.}. In the following, we describe in detail the computational strategy employed.
+\section*{Mixture free energy: \texttt{random walk mode}}
+Let consider a mixture of PAH and (atomic/molecular) hydrogen and the problem of minimizing the mixture free energy. The initial mixture composition can be defined in terms of the number of molecules per each hydrogenated specie, $N^0_n$, plus the number of H atoms, $N^0_H$, and $\text{H}_2$ molecules, $N^0_{H_2}$. The associated initial Gibbs free energy is $G_{mix}^0$. The mixture composition can then be optimized \emph{stochastically}, by introducing random variations on each mixture components, simulating a sort of \emph{random walk} on the mixture composition. After any variation,  the mixture free energy, $G_{mix}^{1}$ is re-computed and compared with that of the previous step: if lower, $G_{mix}^1 < G_{mix}^0$, the newly random-generated composition is "saved" and used for the next step; otherwise that composition is "discarded" and another random-generated composition is checked until $G_{mix}^1 < G_{mix}^0$ is found. Such stochastic procedure can be applied to a mixture with an initial composition consisting of only bare PAH molecules and an excess of $\text{H}_2$, \emph{i.e.} setting $N^0_i\simeq 0$ and $N^0_{H}\simeq 0$. In principle, one may introduce random variations on each $N_i$ from the very first optimization step. However, a more reasonable choice consists in allowing the $(i+1)$ structure to "form" in the mixture only once the mixture with the hydrogenated molecules up to $n=i$ has reached the equilibrium\footnote{In other words, we are assuming that each hydrogenation step is "independent" of the others. Then, the equilibrium composition is reached through multiple "local" equilbria, $\text{C}_{24}\text{H}_{12+n} + \text{H} \rightarrow \text{C}_{24}\text{H}_{12+n+1}$.}. The following subsection briefly summarize the employed computational strategy.
 
 \subsection*{Computational strategy}
 The composition of a mixture at a give step $i$ is specified by a set $C=[N^{(i)}_{\text{H}}, N^{(i)}_{\text{H}_2}, $ $N^{(i)}_0, .., N^{(i)}_M]$, where $N^{(i)}_{\text{H}}$ is  the number of H atoms, $N^{(i)}_{\text{H}_2}$ is the number of $\text{H}_2$ molecules and $N^{(i)}_n$ that of $n$-hydrogenated PAH molecules, where $n=0,1,..M$ with $M$ the total number of hydrogenation steps (\emph{i.e.} $M=24$ for coronene)\footnote{Remind that this is the mixture with the optimized composition generated by the $i-1$ step.}. Variations on the abundances are introduced by adding to these, $\delta N^{(i)}_H$, $\delta N^{(i)}_{\text{H}_2}$, $\delta N^{(i)}_n$, that are given by (\emph{e.g.} for $N^{(i)}_n$)
@@ -170,17 +173,16 @@ Notice that $dN'_n \neq dN_n$ are the final "true" random-variation, \emph{i.e.}
     G_{mix}^{(i)} = \sum_{n=0}^MN'_nG_n+N'_{H}G_{H}+N'_{H_2}G_{H_2} \nonumber
 \end{equation}
 
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.68\textwidth]{APPENDIX/IMAGES/flowchart}
-%\caption{Flowchart describing the optimization procedure.}
-%\label{fig:flowchart}
-%\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.68\textwidth]{flowchart}
+\caption{A flowchart describing the optimization procedure.}
+\label{fig:flowchart}
+\end{figure}
 
-As we mentioned before, we make the assumption of a stepwise optimization, where $[N_n, N_{n+1}, ..., N_{M}]$ populations are set to zero until $[N_{\text{H}}, N_{\text{H}_2}, N_0, ..., N_{n-1}]$ is optimized. In this sense, the full mixture composition optimization is divided into $M$ sub-optimizations, that we call $K=1, 2, ..., M$. The suboptimization $K=1$ involves the species $n=0,1$, $K=2$ the species $n=0,1,2$, etc. Since the interval of the random variation depends on the input composition at that step (see Equation \eqref{eqapp:variations}), at the very first step when the abundance of $N_n$ is "unconstrained", its value is set to a fraction (typically $1/100$ but this can be tuned in the input file) of the most abundant specie in the mixture at that moment. This choice guarantees that the equilibrium is hardly changed. Flowchart in Figure \ref{fig:flowchart} summarize the optimization procedure.
+As we mentioned before, we make the assumption of a stepwise optimization, where $[N_n, N_{n+1}, ..., N_{M}]$ populations are set to zero until $[N_{\text{H}}, N_{\text{H}_2}, N_0, ..., N_{n-1}]$ is optimized. In this sense, the full mixture composition optimization is divided into $M$ sub-optimizations, that we call $K=1, 2, ..., M$. The suboptimization $K=1$ involves the species $n=0,1$, $K=2$ the species $n=0,1,2$, etc. Since the interval of the random variation depends on the input composition at that step (see Equation \eqref{eqapp:variations}), at the very first step when the abundance of $N_n$ is "unconstrained", its value is set to a fraction (typically $1/100$ but this can be tuned in the input file) of the most abundant specie in the mixture at that moment. This choice should not affect the equilibrium just reached at the previous step. The flowchart in Figure \ref{fig:flowchart} summarize the optimization procedure.
 
-At the end of any sub-optimization, the reached equilibrium composition defined in terms of number of molecules ($N'_n$) is saved and fitted according to
-
+At the end of any sub-optimization, the final equilibrium composition defined in terms of number of molecules ($N'_n$) is saved and written into a file called \texttt{\#\#-seqopt.out}. To make it "smooth", each of these mixture compositions are fitted according to:
 \begin{equation}
     s(x)=\sum_{n=0}^{M} N'_n L_n(x) \nonumber 
 \end{equation}
@@ -188,7 +190,7 @@ where $L_n(x)$ is a \emph{Lorentzian function}
 \begin{equation}
     L_n(x) = \frac{1}{\pi}\frac{\frac{\gamma}{2}}{(x-n)^2+(\frac{\gamma}{2})^2} \nonumber
 \end{equation}
-with $\gamma$ is a scale parameter (the \emph{full width at half-maximum}) that allows tuning the shape of the lorentzian. 
+and $\gamma$ is a scale parameter (the \emph{full width at half-maximum}) that allows tuning the shape of the Lorentzian. Lorentzian-fitted compositions are saved into files named \texttt{\#\#-lorentzian.out}
 
 
 \end{document}
