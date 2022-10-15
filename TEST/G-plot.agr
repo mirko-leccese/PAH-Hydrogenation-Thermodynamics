@@ -1,0 +1,1344 @@
+# Grace project file
+#
+@version 50125
+@page size 792, 612
+@page scroll 5%
+@page inout 5%
+@link page off
+@map font 0 to "Times-Roman", "Times-Roman"
+@map font 1 to "Times-Italic", "Times-Italic"
+@map font 2 to "Times-Bold", "Times-Bold"
+@map font 3 to "Times-BoldItalic", "Times-BoldItalic"
+@map font 4 to "Helvetica", "Helvetica"
+@map font 5 to "Helvetica-Oblique", "Helvetica-Oblique"
+@map font 6 to "Helvetica-Bold", "Helvetica-Bold"
+@map font 7 to "Helvetica-BoldOblique", "Helvetica-BoldOblique"
+@map font 8 to "Courier", "Courier"
+@map font 9 to "Courier-Oblique", "Courier-Oblique"
+@map font 10 to "Courier-Bold", "Courier-Bold"
+@map font 11 to "Courier-BoldOblique", "Courier-BoldOblique"
+@map font 12 to "Symbol", "Symbol"
+@map font 13 to "ZapfDingbats", "ZapfDingbats"
+@map color 0 to (255, 255, 255), "white"
+@map color 1 to (0, 0, 0), "black"
+@map color 2 to (198, 172, 135), "beige"
+@map color 3 to (246, 166, 99), "lightsalmon"
+@map color 4 to (176, 110, 21), "brown"
+@map color 5 to (238, 114, 68), "darksalmon"
+@map color 6 to (155, 25, 21), "darkred"
+@map color 7 to (231, 31, 93), "magenta"
+@map color 8 to (153, 60, 149), "violet"
+@map color 9 to (49, 61, 145), "blue"
+@map color 10 to (0, 0, 0), "black"
+@map color 11 to (105, 105, 105), "grey"
+@map color 12 to (190, 197, 1), "pistachium"
+@map color 13 to (11, 92, 43), "darkgeen"
+@map color 14 to (0, 131, 93), "green"
+@map color 15 to (126, 164, 108), "green2"
+@map color 16 to (0, 164, 164), "indaco"
+@map color 17 to (127, 192, 234), "lightblue"
+@map color 18 to (220, 220, 220), "lightgrey"
+@reference date 0
+@date wrap off
+@date wrap year 1950
+@default linewidth 1.0
+@default linestyle 1
+@default color 1
+@default pattern 1
+@default font 0
+@default char size 1.000000
+@default symbol size 1.000000
+@default sformat "%.8g"
+@background color 0
+@page background fill on
+@timestamp off
+@timestamp 0.03, 0.03
+@timestamp color 1
+@timestamp rot 0
+@timestamp font 0
+@timestamp char size 1.000000
+@timestamp def "Sat Oct 15 21:28:59 2022"
+@with string
+@    string on
+@    string loctype view
+@    string 0.287990196078, 0.779411764706
+@    string color 1
+@    string rot 0
+@    string font 4
+@    string just 0
+@    string char size 1.000000
+@    string def "K = 4"
+@with string
+@    string on
+@    string loctype view
+@    string 0.442401960784, 0.689950980392
+@    string color 1
+@    string rot 0
+@    string font 5
+@    string just 0
+@    string char size 1.000000
+@    string def "K = 8"
+@with string
+@    string on
+@    string loctype view
+@    string 0.539215686274, 0.63112745098
+@    string color 1
+@    string rot 0
+@    string font 5
+@    string just 0
+@    string char size 1.000000
+@    string def "K = 10"
+@with string
+@    string on
+@    string loctype view
+@    string 0.63725490196, 0.601715686275
+@    string color 1
+@    string rot 0
+@    string font 5
+@    string just 0
+@    string char size 1.000000
+@    string def "K = 12"
+@with string
+@    string on
+@    string loctype view
+@    string 1.05637254902, 0.360294117647
+@    string color 1
+@    string rot 0
+@    string font 5
+@    string just 0
+@    string char size 1.000000
+@    string def "K = 22"
+@with string
+@    string on
+@    string loctype view
+@    string 0.928921568628, 0.44975490196
+@    string color 1
+@    string rot 0
+@    string font 5
+@    string just 0
+@    string char size 1.000000
+@    string def "K = 18"
+@with string
+@    string on
+@    string loctype view
+@    string 0.783088235294, 0.476715686274
+@    string color 1
+@    string rot 0
+@    string font 5
+@    string just 0
+@    string char size 1.000000
+@    string def "K = 16"
+@with string
+@    string on
+@    string loctype view
+@    string 0.712009803921, 0.557598039215
+@    string color 1
+@    string rot 0
+@    string font 5
+@    string just 0
+@    string char size 1.000000
+@    string def "K = 14"
+@with string
+@    string on
+@    string loctype view
+@    string 0.351715686274, 0.721813725491
+@    string color 1
+@    string rot 0
+@    string font 5
+@    string just 0
+@    string char size 1.000000
+@    string def "K = 6"
+@r0 off
+@link r0 to g0
+@r0 type above
+@r0 linestyle 1
+@r0 linewidth 1.0
+@r0 color 1
+@r0 line 0, 0, 0, 0
+@r1 off
+@link r1 to g0
+@r1 type above
+@r1 linestyle 1
+@r1 linewidth 1.0
+@r1 color 1
+@r1 line 0, 0, 0, 0
+@r2 off
+@link r2 to g0
+@r2 type above
+@r2 linestyle 1
+@r2 linewidth 1.0
+@r2 color 1
+@r2 line 0, 0, 0, 0
+@r3 off
+@link r3 to g0
+@r3 type above
+@r3 linestyle 1
+@r3 linewidth 1.0
+@r3 color 1
+@r3 line 0, 0, 0, 0
+@r4 off
+@link r4 to g0
+@r4 type above
+@r4 linestyle 1
+@r4 linewidth 1.0
+@r4 color 1
+@r4 line 0, 0, 0, 0
+@g0 on
+@g0 hidden false
+@g0 type XY
+@g0 stacked false
+@g0 bar hgap 0.000000
+@g0 fixedpoint off
+@g0 fixedpoint type 0
+@g0 fixedpoint xy 0.000000, 0.000000
+@g0 fixedpoint format general general
+@g0 fixedpoint prec 6, 6
+@with g0
+@    world 0, -7000, 468, 0
+@    stack world 0, 0, 0, 0
+@    znorm 1
+@    view 0.150000, 0.150000, 1.150000, 0.850000
+@    title ""
+@    title font 0
+@    title size 1.500000
+@    title color 1
+@    subtitle ""
+@    subtitle font 0
+@    subtitle size 1.000000
+@    subtitle color 1
+@    xaxes scale Normal
+@    yaxes scale Normal
+@    xaxes invert off
+@    yaxes invert off
+@    xaxis  on
+@    xaxis  type zero false
+@    xaxis  offset 0.000000 , 0.000000
+@    xaxis  bar on
+@    xaxis  bar color 1
+@    xaxis  bar linestyle 1
+@    xaxis  bar linewidth 1.0
+@    xaxis  label "i (Opt steps)"
+@    xaxis  label layout para
+@    xaxis  label place auto
+@    xaxis  label char size 1.000000
+@    xaxis  label font 5
+@    xaxis  label color 1
+@    xaxis  label place normal
+@    xaxis  tick on
+@    xaxis  tick major 50
+@    xaxis  tick minor ticks 1
+@    xaxis  tick default 6
+@    xaxis  tick place rounded true
+@    xaxis  tick in
+@    xaxis  tick major size 1.000000
+@    xaxis  tick major color 1
+@    xaxis  tick major linewidth 1.0
+@    xaxis  tick major linestyle 1
+@    xaxis  tick major grid off
+@    xaxis  tick minor color 1
+@    xaxis  tick minor linewidth 1.0
+@    xaxis  tick minor linestyle 1
+@    xaxis  tick minor grid off
+@    xaxis  tick minor size 0.500000
+@    xaxis  ticklabel on
+@    xaxis  ticklabel format general
+@    xaxis  ticklabel prec 5
+@    xaxis  ticklabel formula ""
+@    xaxis  ticklabel append ""
+@    xaxis  ticklabel prepend ""
+@    xaxis  ticklabel angle 0
+@    xaxis  ticklabel skip 0
+@    xaxis  ticklabel stagger 0
+@    xaxis  ticklabel place normal
+@    xaxis  ticklabel offset auto
+@    xaxis  ticklabel offset 0.000000 , 0.010000
+@    xaxis  ticklabel start type auto
+@    xaxis  ticklabel start 0.000000
+@    xaxis  ticklabel stop type auto
+@    xaxis  ticklabel stop 0.000000
+@    xaxis  ticklabel char size 1.000000
+@    xaxis  ticklabel font 4
+@    xaxis  ticklabel color 1
+@    xaxis  tick place both
+@    xaxis  tick spec type none
+@    yaxis  on
+@    yaxis  type zero false
+@    yaxis  offset 0.000000 , 0.000000
+@    yaxis  bar on
+@    yaxis  bar color 1
+@    yaxis  bar linestyle 1
+@    yaxis  bar linewidth 1.0
+@    yaxis  label "G\smix,i\N (eV)"
+@    yaxis  label layout para
+@    yaxis  label place auto
+@    yaxis  label char size 1.000000
+@    yaxis  label font 4
+@    yaxis  label color 1
+@    yaxis  label place normal
+@    yaxis  tick on
+@    yaxis  tick major 1000
+@    yaxis  tick minor ticks 1
+@    yaxis  tick default 6
+@    yaxis  tick place rounded true
+@    yaxis  tick in
+@    yaxis  tick major size 1.000000
+@    yaxis  tick major color 1
+@    yaxis  tick major linewidth 1.0
+@    yaxis  tick major linestyle 1
+@    yaxis  tick major grid off
+@    yaxis  tick minor color 1
+@    yaxis  tick minor linewidth 1.0
+@    yaxis  tick minor linestyle 1
+@    yaxis  tick minor grid off
+@    yaxis  tick minor size 0.500000
+@    yaxis  ticklabel on
+@    yaxis  ticklabel format general
+@    yaxis  ticklabel prec 5
+@    yaxis  ticklabel formula ""
+@    yaxis  ticklabel append ""
+@    yaxis  ticklabel prepend ""
+@    yaxis  ticklabel angle 0
+@    yaxis  ticklabel skip 0
+@    yaxis  ticklabel stagger 0
+@    yaxis  ticklabel place normal
+@    yaxis  ticklabel offset auto
+@    yaxis  ticklabel offset 0.000000 , 0.010000
+@    yaxis  ticklabel start type auto
+@    yaxis  ticklabel start 0.000000
+@    yaxis  ticklabel stop type auto
+@    yaxis  ticklabel stop 0.000000
+@    yaxis  ticklabel char size 1.000000
+@    yaxis  ticklabel font 4
+@    yaxis  ticklabel color 1
+@    yaxis  tick place both
+@    yaxis  tick spec type none
+@    altxaxis  off
+@    altyaxis  off
+@    legend on
+@    legend loctype view
+@    legend 0.85, 0.8
+@    legend box color 1
+@    legend box pattern 1
+@    legend box linewidth 1.0
+@    legend box linestyle 1
+@    legend box fill color 0
+@    legend box fill pattern 1
+@    legend font 0
+@    legend char size 1.000000
+@    legend color 1
+@    legend length 4
+@    legend vgap 1
+@    legend hgap 1
+@    legend invert false
+@    frame type 0
+@    frame linestyle 1
+@    frame linewidth 1.0
+@    frame color 1
+@    frame pattern 1
+@    frame background color 18
+@    frame background pattern 4
+@    s0 hidden false
+@    s0 type xy
+@    s0 symbol 0
+@    s0 symbol size 0.500000
+@    s0 symbol color 7
+@    s0 symbol pattern 1
+@    s0 symbol fill color 7
+@    s0 symbol fill pattern 1
+@    s0 symbol linewidth 1.0
+@    s0 symbol linestyle 1
+@    s0 symbol char 65
+@    s0 symbol char font 0
+@    s0 symbol skip 0
+@    s0 line type 1
+@    s0 line linestyle 1
+@    s0 line linewidth 2.5
+@    s0 line color 7
+@    s0 line pattern 1
+@    s0 baseline type 0
+@    s0 baseline off
+@    s0 dropline off
+@    s0 fill type 0
+@    s0 fill rule 0
+@    s0 fill color 1
+@    s0 fill pattern 1
+@    s0 avalue off
+@    s0 avalue type 2
+@    s0 avalue char size 1.000000
+@    s0 avalue font 0
+@    s0 avalue color 1
+@    s0 avalue rot 0
+@    s0 avalue format general
+@    s0 avalue prec 3
+@    s0 avalue prepend ""
+@    s0 avalue append ""
+@    s0 avalue offset 0.000000 , 0.000000
+@    s0 errorbar on
+@    s0 errorbar place both
+@    s0 errorbar color 7
+@    s0 errorbar pattern 1
+@    s0 errorbar size 1.000000
+@    s0 errorbar linewidth 1.0
+@    s0 errorbar linestyle 1
+@    s0 errorbar riser linewidth 1.0
+@    s0 errorbar riser linestyle 1
+@    s0 errorbar riser clip off
+@    s0 errorbar riser clip length 0.100000
+@    s0 comment "G-RandomWalk.out"
+@    s0 legend  ""
+@    s1 hidden false
+@    s1 type xy
+@    s1 symbol 0
+@    s1 symbol size 1.000000
+@    s1 symbol color 1
+@    s1 symbol pattern 1
+@    s1 symbol fill color 1
+@    s1 symbol fill pattern 0
+@    s1 symbol linewidth 1.0
+@    s1 symbol linestyle 1
+@    s1 symbol char 65
+@    s1 symbol char font 0
+@    s1 symbol skip 0
+@    s1 line type 1
+@    s1 line linestyle 3
+@    s1 line linewidth 1.5
+@    s1 line color 1
+@    s1 line pattern 1
+@    s1 baseline type 0
+@    s1 baseline off
+@    s1 dropline off
+@    s1 fill type 0
+@    s1 fill rule 0
+@    s1 fill color 1
+@    s1 fill pattern 1
+@    s1 avalue off
+@    s1 avalue type 2
+@    s1 avalue char size 1.000000
+@    s1 avalue font 0
+@    s1 avalue color 1
+@    s1 avalue rot 0
+@    s1 avalue format general
+@    s1 avalue prec 3
+@    s1 avalue prepend ""
+@    s1 avalue append ""
+@    s1 avalue offset 0.000000 , 0.000000
+@    s1 errorbar on
+@    s1 errorbar place both
+@    s1 errorbar color 1
+@    s1 errorbar pattern 1
+@    s1 errorbar size 1.000000
+@    s1 errorbar linewidth 1.0
+@    s1 errorbar linestyle 1
+@    s1 errorbar riser linewidth 1.0
+@    s1 errorbar riser linestyle 1
+@    s1 errorbar riser clip off
+@    s1 errorbar riser clip length 0.100000
+@    s1 comment "G-RandomWalk.out"
+@    s1 legend  ""
+@    s2 hidden false
+@    s2 type xy
+@    s2 symbol 0
+@    s2 symbol size 1.000000
+@    s2 symbol color 1
+@    s2 symbol pattern 1
+@    s2 symbol fill color 1
+@    s2 symbol fill pattern 0
+@    s2 symbol linewidth 1.5
+@    s2 symbol linestyle 1
+@    s2 symbol char 65
+@    s2 symbol char font 0
+@    s2 symbol skip 0
+@    s2 line type 1
+@    s2 line linestyle 3
+@    s2 line linewidth 1.5
+@    s2 line color 1
+@    s2 line pattern 1
+@    s2 baseline type 0
+@    s2 baseline off
+@    s2 dropline off
+@    s2 fill type 0
+@    s2 fill rule 0
+@    s2 fill color 1
+@    s2 fill pattern 1
+@    s2 avalue off
+@    s2 avalue type 2
+@    s2 avalue char size 1.000000
+@    s2 avalue font 0
+@    s2 avalue color 1
+@    s2 avalue rot 0
+@    s2 avalue format general
+@    s2 avalue prec 3
+@    s2 avalue prepend ""
+@    s2 avalue append ""
+@    s2 avalue offset 0.000000 , 0.000000
+@    s2 errorbar on
+@    s2 errorbar place both
+@    s2 errorbar color 1
+@    s2 errorbar pattern 1
+@    s2 errorbar size 1.000000
+@    s2 errorbar linewidth 1.0
+@    s2 errorbar linestyle 1
+@    s2 errorbar riser linewidth 1.0
+@    s2 errorbar riser linestyle 1
+@    s2 errorbar riser clip off
+@    s2 errorbar riser clip length 0.100000
+@    s2 comment "G-RandomWalk.out"
+@    s2 legend  ""
+@    s3 hidden false
+@    s3 type xy
+@    s3 symbol 0
+@    s3 symbol size 1.000000
+@    s3 symbol color 1
+@    s3 symbol pattern 1
+@    s3 symbol fill color 1
+@    s3 symbol fill pattern 0
+@    s3 symbol linewidth 1.5
+@    s3 symbol linestyle 1
+@    s3 symbol char 65
+@    s3 symbol char font 0
+@    s3 symbol skip 0
+@    s3 line type 1
+@    s3 line linestyle 3
+@    s3 line linewidth 1.5
+@    s3 line color 1
+@    s3 line pattern 1
+@    s3 baseline type 0
+@    s3 baseline off
+@    s3 dropline off
+@    s3 fill type 0
+@    s3 fill rule 0
+@    s3 fill color 1
+@    s3 fill pattern 1
+@    s3 avalue off
+@    s3 avalue type 2
+@    s3 avalue char size 1.000000
+@    s3 avalue font 0
+@    s3 avalue color 1
+@    s3 avalue rot 0
+@    s3 avalue format general
+@    s3 avalue prec 3
+@    s3 avalue prepend ""
+@    s3 avalue append ""
+@    s3 avalue offset 0.000000 , 0.000000
+@    s3 errorbar on
+@    s3 errorbar place both
+@    s3 errorbar color 1
+@    s3 errorbar pattern 1
+@    s3 errorbar size 1.000000
+@    s3 errorbar linewidth 1.0
+@    s3 errorbar linestyle 1
+@    s3 errorbar riser linewidth 1.0
+@    s3 errorbar riser linestyle 1
+@    s3 errorbar riser clip off
+@    s3 errorbar riser clip length 0.100000
+@    s3 comment "G-RandomWalk.out"
+@    s3 legend  ""
+@    s4 hidden false
+@    s4 type xy
+@    s4 symbol 0
+@    s4 symbol size 1.000000
+@    s4 symbol color 1
+@    s4 symbol pattern 1
+@    s4 symbol fill color 1
+@    s4 symbol fill pattern 0
+@    s4 symbol linewidth 1.5
+@    s4 symbol linestyle 1
+@    s4 symbol char 65
+@    s4 symbol char font 0
+@    s4 symbol skip 0
+@    s4 line type 1
+@    s4 line linestyle 3
+@    s4 line linewidth 1.5
+@    s4 line color 1
+@    s4 line pattern 1
+@    s4 baseline type 0
+@    s4 baseline off
+@    s4 dropline off
+@    s4 fill type 0
+@    s4 fill rule 0
+@    s4 fill color 1
+@    s4 fill pattern 1
+@    s4 avalue off
+@    s4 avalue type 2
+@    s4 avalue char size 1.000000
+@    s4 avalue font 0
+@    s4 avalue color 1
+@    s4 avalue rot 0
+@    s4 avalue format general
+@    s4 avalue prec 3
+@    s4 avalue prepend ""
+@    s4 avalue append ""
+@    s4 avalue offset 0.000000 , 0.000000
+@    s4 errorbar on
+@    s4 errorbar place both
+@    s4 errorbar color 1
+@    s4 errorbar pattern 1
+@    s4 errorbar size 1.000000
+@    s4 errorbar linewidth 1.0
+@    s4 errorbar linestyle 1
+@    s4 errorbar riser linewidth 1.0
+@    s4 errorbar riser linestyle 1
+@    s4 errorbar riser clip off
+@    s4 errorbar riser clip length 0.100000
+@    s4 comment "G-RandomWalk.out"
+@    s4 legend  ""
+@    s5 hidden false
+@    s5 type xy
+@    s5 symbol 0
+@    s5 symbol size 1.000000
+@    s5 symbol color 1
+@    s5 symbol pattern 1
+@    s5 symbol fill color 1
+@    s5 symbol fill pattern 0
+@    s5 symbol linewidth 1.5
+@    s5 symbol linestyle 1
+@    s5 symbol char 65
+@    s5 symbol char font 0
+@    s5 symbol skip 0
+@    s5 line type 1
+@    s5 line linestyle 3
+@    s5 line linewidth 1.5
+@    s5 line color 1
+@    s5 line pattern 1
+@    s5 baseline type 0
+@    s5 baseline off
+@    s5 dropline off
+@    s5 fill type 0
+@    s5 fill rule 0
+@    s5 fill color 1
+@    s5 fill pattern 1
+@    s5 avalue off
+@    s5 avalue type 2
+@    s5 avalue char size 1.000000
+@    s5 avalue font 0
+@    s5 avalue color 1
+@    s5 avalue rot 0
+@    s5 avalue format general
+@    s5 avalue prec 3
+@    s5 avalue prepend ""
+@    s5 avalue append ""
+@    s5 avalue offset 0.000000 , 0.000000
+@    s5 errorbar on
+@    s5 errorbar place both
+@    s5 errorbar color 1
+@    s5 errorbar pattern 1
+@    s5 errorbar size 1.000000
+@    s5 errorbar linewidth 1.0
+@    s5 errorbar linestyle 1
+@    s5 errorbar riser linewidth 1.0
+@    s5 errorbar riser linestyle 1
+@    s5 errorbar riser clip off
+@    s5 errorbar riser clip length 0.100000
+@    s5 comment "G-RandomWalk.out"
+@    s5 legend  ""
+@    s6 hidden false
+@    s6 type xy
+@    s6 symbol 0
+@    s6 symbol size 1.000000
+@    s6 symbol color 1
+@    s6 symbol pattern 1
+@    s6 symbol fill color 1
+@    s6 symbol fill pattern 0
+@    s6 symbol linewidth 1.5
+@    s6 symbol linestyle 1
+@    s6 symbol char 65
+@    s6 symbol char font 0
+@    s6 symbol skip 0
+@    s6 line type 1
+@    s6 line linestyle 3
+@    s6 line linewidth 1.5
+@    s6 line color 1
+@    s6 line pattern 1
+@    s6 baseline type 0
+@    s6 baseline off
+@    s6 dropline off
+@    s6 fill type 0
+@    s6 fill rule 0
+@    s6 fill color 1
+@    s6 fill pattern 1
+@    s6 avalue off
+@    s6 avalue type 2
+@    s6 avalue char size 1.000000
+@    s6 avalue font 0
+@    s6 avalue color 1
+@    s6 avalue rot 0
+@    s6 avalue format general
+@    s6 avalue prec 3
+@    s6 avalue prepend ""
+@    s6 avalue append ""
+@    s6 avalue offset 0.000000 , 0.000000
+@    s6 errorbar on
+@    s6 errorbar place both
+@    s6 errorbar color 1
+@    s6 errorbar pattern 1
+@    s6 errorbar size 1.000000
+@    s6 errorbar linewidth 1.0
+@    s6 errorbar linestyle 1
+@    s6 errorbar riser linewidth 1.0
+@    s6 errorbar riser linestyle 1
+@    s6 errorbar riser clip off
+@    s6 errorbar riser clip length 0.100000
+@    s6 comment "G-RandomWalk.out"
+@    s6 legend  ""
+@    s7 hidden false
+@    s7 type xy
+@    s7 symbol 0
+@    s7 symbol size 1.000000
+@    s7 symbol color 1
+@    s7 symbol pattern 1
+@    s7 symbol fill color 1
+@    s7 symbol fill pattern 0
+@    s7 symbol linewidth 1.5
+@    s7 symbol linestyle 1
+@    s7 symbol char 65
+@    s7 symbol char font 0
+@    s7 symbol skip 0
+@    s7 line type 1
+@    s7 line linestyle 3
+@    s7 line linewidth 1.5
+@    s7 line color 1
+@    s7 line pattern 1
+@    s7 baseline type 0
+@    s7 baseline off
+@    s7 dropline off
+@    s7 fill type 0
+@    s7 fill rule 0
+@    s7 fill color 1
+@    s7 fill pattern 1
+@    s7 avalue off
+@    s7 avalue type 2
+@    s7 avalue char size 1.000000
+@    s7 avalue font 0
+@    s7 avalue color 1
+@    s7 avalue rot 0
+@    s7 avalue format general
+@    s7 avalue prec 3
+@    s7 avalue prepend ""
+@    s7 avalue append ""
+@    s7 avalue offset 0.000000 , 0.000000
+@    s7 errorbar on
+@    s7 errorbar place both
+@    s7 errorbar color 1
+@    s7 errorbar pattern 1
+@    s7 errorbar size 1.000000
+@    s7 errorbar linewidth 1.0
+@    s7 errorbar linestyle 1
+@    s7 errorbar riser linewidth 1.0
+@    s7 errorbar riser linestyle 1
+@    s7 errorbar riser clip off
+@    s7 errorbar riser clip length 0.100000
+@    s7 comment "G-RandomWalk.out"
+@    s7 legend  ""
+@    s8 hidden false
+@    s8 type xy
+@    s8 symbol 0
+@    s8 symbol size 1.000000
+@    s8 symbol color 1
+@    s8 symbol pattern 1
+@    s8 symbol fill color 1
+@    s8 symbol fill pattern 0
+@    s8 symbol linewidth 1.5
+@    s8 symbol linestyle 1
+@    s8 symbol char 65
+@    s8 symbol char font 0
+@    s8 symbol skip 0
+@    s8 line type 1
+@    s8 line linestyle 3
+@    s8 line linewidth 1.5
+@    s8 line color 1
+@    s8 line pattern 1
+@    s8 baseline type 0
+@    s8 baseline off
+@    s8 dropline off
+@    s8 fill type 0
+@    s8 fill rule 0
+@    s8 fill color 1
+@    s8 fill pattern 1
+@    s8 avalue off
+@    s8 avalue type 2
+@    s8 avalue char size 1.000000
+@    s8 avalue font 0
+@    s8 avalue color 1
+@    s8 avalue rot 0
+@    s8 avalue format general
+@    s8 avalue prec 3
+@    s8 avalue prepend ""
+@    s8 avalue append ""
+@    s8 avalue offset 0.000000 , 0.000000
+@    s8 errorbar on
+@    s8 errorbar place both
+@    s8 errorbar color 1
+@    s8 errorbar pattern 1
+@    s8 errorbar size 1.000000
+@    s8 errorbar linewidth 1.0
+@    s8 errorbar linestyle 1
+@    s8 errorbar riser linewidth 1.0
+@    s8 errorbar riser linestyle 1
+@    s8 errorbar riser clip off
+@    s8 errorbar riser clip length 0.100000
+@    s8 comment "G-RandomWalk.out"
+@    s8 legend  ""
+@    s9 hidden false
+@    s9 type xy
+@    s9 symbol 0
+@    s9 symbol size 1.000000
+@    s9 symbol color 1
+@    s9 symbol pattern 1
+@    s9 symbol fill color 1
+@    s9 symbol fill pattern 0
+@    s9 symbol linewidth 1.5
+@    s9 symbol linestyle 1
+@    s9 symbol char 65
+@    s9 symbol char font 0
+@    s9 symbol skip 0
+@    s9 line type 1
+@    s9 line linestyle 3
+@    s9 line linewidth 1.5
+@    s9 line color 1
+@    s9 line pattern 1
+@    s9 baseline type 0
+@    s9 baseline off
+@    s9 dropline off
+@    s9 fill type 0
+@    s9 fill rule 0
+@    s9 fill color 1
+@    s9 fill pattern 1
+@    s9 avalue off
+@    s9 avalue type 2
+@    s9 avalue char size 1.000000
+@    s9 avalue font 0
+@    s9 avalue color 1
+@    s9 avalue rot 0
+@    s9 avalue format general
+@    s9 avalue prec 3
+@    s9 avalue prepend ""
+@    s9 avalue append ""
+@    s9 avalue offset 0.000000 , 0.000000
+@    s9 errorbar on
+@    s9 errorbar place both
+@    s9 errorbar color 1
+@    s9 errorbar pattern 1
+@    s9 errorbar size 1.000000
+@    s9 errorbar linewidth 1.0
+@    s9 errorbar linestyle 1
+@    s9 errorbar riser linewidth 1.0
+@    s9 errorbar riser linestyle 1
+@    s9 errorbar riser clip off
+@    s9 errorbar riser clip length 0.100000
+@    s9 comment "G-RandomWalk.out"
+@    s9 legend  ""
+@target G0.S0
+@type xy
+1 -150.31334
+2 -150.42271
+3 -161.4495
+4 -189.73495
+5 -193.9815
+6 -231.72037
+7 -243.08214
+8 -244.99017
+9 -258.6121
+10 -259.00799
+11 -259.29058
+12 -259.32503
+13 -259.32641
+14 -259.36263
+15 -259.36991
+16 -259.37361
+17 -259.37603
+18 -259.37619
+19 -259.37629
+20 -259.37647
+21 -259.37649
+22 -259.37651
+23 -259.37655
+24 -259.37656
+25 -259.37656
+26 -336.25295
+27 -338.2263
+28 -338.2515
+29 -338.25886
+30 -338.26579
+31 -338.26582
+32 -338.26671
+33 -338.26673
+34 -338.26674
+35 -338.26674
+36 -338.26674
+37 -495.74779
+38 -496.02152
+39 -496.02637
+40 -496.0318
+41 -496.04022
+42 -496.04472
+43 -496.04502
+44 -496.04578
+45 -496.04601
+46 -496.04619
+47 -496.04661
+48 -496.04704
+49 -496.04705
+50 -496.04705
+51 -496.04706
+52 -496.04708
+53 -496.04709
+54 -496.0471
+55 -496.0471
+56 -727.09498
+57 -728.69152
+58 -731.08809
+59 -732.25072
+60 -732.26382
+61 -732.54389
+62 -732.67763
+63 -732.71155
+64 -732.71565
+65 -732.71621
+66 -732.71736
+67 -732.71737
+68 -732.71746
+69 -732.71752
+70 -732.71762
+71 -732.71763
+72 -732.71763
+73 -1050.4274
+74 -1050.6104
+75 -1062.6892
+76 -1188.9176
+77 -1250.9348
+78 -1252.1404
+79 -1262.8993
+80 -1267.011
+81 -1267.0312
+82 -1269.3918
+83 -1269.4317
+84 -1269.4677
+85 -1269.4687
+86 -1269.4695
+87 -1269.4695
+88 -1269.4695
+89 -1269.4696
+90 -1269.4696
+91 -1269.4696
+92 -1343.0233
+93 -1347.5743
+94 -1347.5797
+95 -1348.0473
+96 -1348.3107
+97 -1348.3193
+98 -1348.3423
+99 -1348.3441
+100 -1348.3571
+101 -1348.3587
+102 -1348.3587
+103 -1348.3597
+104 -1348.3597
+105 -1348.3597
+106 -1348.3597
+107 -1348.3598
+108 -1348.3598
+109 -1348.3598
+110 -1348.3598
+111 -1506.4399
+112 -1506.5677
+113 -1506.6033
+114 -1513.6628
+115 -1516.2507
+116 -1517.3812
+117 -1518.2857
+118 -1574.8593
+119 -1581.5262
+120 -1589.2718
+121 -1589.9901
+122 -1591.9905
+123 -1592.2048
+124 -1592.315
+125 -1592.3382
+126 -1592.347
+127 -1592.3488
+128 -1592.3496
+129 -1592.3497
+130 -1592.3497
+131 -1592.3498
+132 -1592.3498
+133 -1665.6842
+134 -1665.802
+135 -1668.0844
+136 -1668.5701
+137 -1669.2464
+138 -1669.7456
+139 -1670.0581
+140 -1671.1266
+141 -1671.2315
+142 -1671.2382
+143 -1671.2392
+144 -1671.2399
+145 -1671.2399
+146 -1671.24
+147 -1671.24
+148 -1671.24
+149 -1671.24
+150 -1829.0987
+151 -1829.1597
+152 -1829.4433
+153 -1836.2887
+154 -1841.649
+155 -1901.5952
+156 -1962.0716
+157 -2115.6524
+158 -2117.3911
+159 -2138.2848
+160 -2166.2878
+161 -2204.0983
+162 -2204.7957
+163 -2206.815
+164 -2210.2742
+165 -2210.4703
+166 -2210.5715
+167 -2210.6595
+168 -2210.8238
+169 -2210.9019
+170 -2210.9095
+171 -2210.9098
+172 -2210.91
+173 -2210.9101
+174 -2210.9101
+175 -2210.9102
+176 -2210.9102
+177 -2210.9102
+178 -2210.9102
+179 -2210.9102
+180 -2285.5724
+181 -2288.0245
+182 -2289.0373
+183 -2289.3777
+184 -2289.693
+185 -2289.7273
+186 -2289.7407
+187 -2289.7812
+188 -2289.7933
+189 -2289.7967
+190 -2289.8003
+191 -2289.8003
+192 -2289.8004
+193 -2289.8004
+194 -2289.8004
+195 -2289.8004
+196 -2289.8004
+197 -2289.8004
+198 -2447.6528
+199 -2447.6652
+200 -2447.7028
+201 -2447.7854
+202 -2447.8869
+203 -2447.9515
+204 -2450.2459
+205 -2452.768
+206 -2453.2852
+207 -2453.6343
+208 -2453.6763
+209 -2453.8184
+210 -2453.9013
+211 -2453.9178
+212 -2454.486
+213 -2454.5216
+214 -2454.5328
+215 -2454.5358
+216 -2454.5406
+217 -2454.5409
+218 -2454.542
+219 -2454.5448
+220 -2454.5458
+221 -2454.5478
+222 -2454.5497
+223 -2454.5501
+224 -2454.5507
+225 -2454.5507
+226 -2454.5507
+227 -2530.8033
+228 -2531.8011
+229 -2533.426
+230 -2533.4291
+231 -2533.4335
+232 -2533.4352
+233 -2533.439
+234 -2533.4405
+235 -2533.4408
+236 -2533.4408
+237 -2533.4408
+238 -2533.4409
+239 -2533.4409
+240 -2533.4409
+241 -2533.4409
+242 -2533.4409
+243 -2533.4409
+244 -2533.4409
+245 -2692.7852
+246 -2695.9553
+247 -2697.0367
+248 -2719.6439
+249 -2734.3868
+250 -2984.63
+251 -3038.8677
+252 -3048.6236
+253 -3052.8537
+254 -3054.2183
+255 -3055.59
+256 -3055.9866
+257 -3056.0209
+258 -3056.0214
+259 -3056.0224
+260 -3056.0225
+261 -3056.023
+262 -3056.023
+263 -3056.0231
+264 -3056.0231
+265 -3056.0231
+266 -3056.0231
+267 -3128.3743
+268 -3131.6973
+269 -3134.5736
+270 -3134.7334
+271 -3134.823
+272 -3134.8735
+273 -3134.9034
+274 -3134.904
+275 -3134.9123
+276 -3134.9128
+277 -3134.913
+278 -3134.9132
+279 -3134.9132
+280 -3134.9132
+281 -3134.9133
+282 -3134.9133
+283 -3134.9133
+284 -3134.9133
+285 -3134.9133
+286 -3292.8837
+287 -3293.1316
+288 -3293.3799
+289 -3294.932
+290 -3319.4999
+291 -3321.0529
+292 -3330.8599
+293 -3331.8038
+294 -3337.0979
+295 -3338.1953
+296 -3339.0222
+297 -3339.0311
+298 -3339.0412
+299 -3339.0563
+300 -3339.0644
+301 -3339.1027
+302 -3339.1139
+303 -3339.1228
+304 -3339.1232
+305 -3339.1234
+306 -3339.1234
+307 -3339.1235
+308 -3339.1235
+309 -3339.1235
+310 -3339.1235
+311 -3412.9832
+312 -3414.3922
+313 -3416.939
+314 -3417.5014
+315 -3417.715
+316 -3417.7192
+317 -3417.8041
+318 -3417.917
+319 -3417.9267
+320 -3417.9595
+321 -3417.9609
+322 -3417.9814
+323 -3418.0039
+324 -3418.0084
+325 -3418.0118
+326 -3418.0124
+327 -3418.0135
+328 -3418.0135
+329 -3418.0137
+330 -3418.0137
+331 -3418.0138
+332 -3418.0138
+333 -3582.7926
+334 -3590.1544
+335 -3801.6394
+336 -4042.5889
+337 -4101.2542
+338 -4104.5785
+339 -4108.0189
+340 -4112.4074
+341 -4112.6988
+342 -4112.7303
+343 -4112.7481
+344 -4112.857
+345 -4112.8827
+346 -4112.9311
+347 -4112.9358
+348 -4112.9409
+349 -4112.9588
+350 -4112.9632
+351 -4112.9633
+352 -4112.9646
+353 -4112.9649
+354 -4112.965
+355 -4112.965
+356 -4112.965
+357 -4112.965
+358 -4112.965
+359 -4112.965
+360 -4191.3924
+361 -4191.5982
+362 -4191.782
+363 -4191.8439
+364 -4191.8543
+365 -4191.8546
+366 -4191.8548
+367 -4191.8548
+368 -4191.855
+369 -4191.855
+370 -4191.8552
+371 -4191.8553
+372 -4191.8553
+373 -4191.8553
+374 -4191.8553
+375 -4348.9128
+376 -4349.4642
+377 -4349.6337
+378 -4349.6353
+379 -4349.6358
+380 -4349.6359
+381 -4349.6359
+382 -4349.6359
+383 -4349.6359
+384 -4349.6359
+385 -4585.2346
+386 -4585.8619
+387 -4586.0791
+388 -4586.2118
+389 -4586.2377
+390 -4586.2841
+391 -4586.2897
+392 -4586.3049
+393 -4586.3058
+394 -4586.306
+395 -4586.3063
+396 -4586.3064
+397 -4586.3064
+398 -4586.3066
+399 -4586.3068
+400 -4586.3068
+401 -4586.3068
+402 -4586.3068
+403 -4586.3068
+404 -4904.8031
+405 -4904.8492
+406 -4905.656
+407 -4924.126
+408 -5091.4827
+409 -5140.5002
+410 -5166.2278
+411 -5179.7161
+412 -5182.6375
+413 -5184.4778
+414 -5187.099
+415 -5188.9945
+416 -5189.3693
+417 -5189.491
+418 -5189.6825
+419 -5189.6907
+420 -5189.7046
+421 -5189.7277
+422 -5189.7279
+423 -5189.7282
+424 -5189.7283
+425 -5189.7292
+426 -5189.7295
+427 -5189.7298
+428 -5189.7298
+429 -5189.7298
+430 -5189.7298
+431 -5189.7298
+432 -5189.7298
+433 -5247.4302
+434 -5266.4595
+435 -5266.7221
+436 -5267.6128
+437 -5268.466
+438 -5268.4799
+439 -5268.62
+440 -5268.62
+441 -5268.6201
+442 -5268.6201
+443 -5268.6201
+444 -5268.6201
+445 -5268.6201
+446 -5464.3651
+447 -5940.7363
+448 -5973.9386
+449 -6006.2378
+450 -6012.2479
+451 -6014.574
+452 -6014.7924
+453 -6014.804
+454 -6014.8157
+455 -6014.8169
+456 -6014.817
+457 -6014.8172
+458 -6014.8178
+459 -6014.8181
+460 -6014.8183
+461 -6014.8183
+462 -6014.8184
+463 -6014.8184
+464 -6014.8184
+465 -6014.8184
+466 -6014.8184
+467 -6014.8184
+&
+@target G0.S1
+@type xy
+55 -10000
+55 10000
+&
+@target G0.S2
+@type xy
+91 -10000
+91 10000
+&
+@target G0.S3
+@type xy
+132 -10000
+132 10000
+&
+@target G0.S4
+@type xy
+179 -10000
+179 10000
+&
+@target G0.S5
+@type xy
+226 -10000
+226 10000
+&
+@target G0.S6
+@type xy
+266 -10000
+266 10000
+&
+@target G0.S7
+@type xy
+310 -10000
+310 10000
+&
+@target G0.S8
+@type xy
+359 -10000
+359 10000
+&
+@target G0.S9
+@type xy
+432 -10000
+432 10000
+&
